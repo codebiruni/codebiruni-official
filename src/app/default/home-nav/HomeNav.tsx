@@ -56,9 +56,9 @@ export default function HomeNav() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  if (pathName.startsWith('/dashboard')) {
-  return null;
-}
+  if (pathName?.startsWith('/dashboard') || pathName?.includes('storepage')) {
+    return null;
+  }
 
   const toggleTheme = () => {
     setTheme(theme === "dark" ? "light" : "dark");
@@ -121,7 +121,8 @@ export default function HomeNav() {
   ];
 
   return (
-    <nav className={`fixed z-50 w-full top-0 transition-all duration-300 ${
+    <>
+      <nav className={`fixed z-50 w-full top-0 transition-all duration-300 ${
       scrolled 
         ? "bg-background/95 backdrop-blur-md border-b shadow-sm" 
         : "bg-background/80 backdrop-blur-sm border-b"
@@ -148,10 +149,8 @@ export default function HomeNav() {
           <NavigationMenu className="hidden lg:block">
             <NavigationMenuList>
               <NavigationMenuItem>
-                <Link href="/" legacyBehavior passHref>
-                  <NavigationMenuLink className={`${navigationMenuTriggerStyle()} font-medium`}>
-                    Home
-                  </NavigationMenuLink>
+                <Link href="/" className={`${navigationMenuTriggerStyle()} font-medium`}>
+                  Home
                 </Link>
               </NavigationMenuItem>
 
@@ -230,26 +229,20 @@ export default function HomeNav() {
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <Link href="/pages/projects" legacyBehavior passHref>
-                  <NavigationMenuLink className={`${navigationMenuTriggerStyle()} font-medium`}>
-                    Projects
-                  </NavigationMenuLink>
+                <Link href="/pages/projects" className={`${navigationMenuTriggerStyle()} font-medium`}>
+                  Projects
                 </Link>
               </NavigationMenuItem>
 
               <NavigationMenuItem>
-                <Link href="/pages/pricing" legacyBehavior passHref>
-                  <NavigationMenuLink className={`${navigationMenuTriggerStyle()} font-medium`}>
-                    Pricing
-                  </NavigationMenuLink>
+                <Link href="/pages/pricing" className={`${navigationMenuTriggerStyle()} font-medium`}>
+                  Pricing
                 </Link>
               </NavigationMenuItem>
               
               <NavigationMenuItem>
-                <Link href="/pages/blog" legacyBehavior passHref>
-                  <NavigationMenuLink className={`${navigationMenuTriggerStyle()} font-medium`}>
-                    Blog
-                  </NavigationMenuLink>
+                <Link href="/pages/blog" className={`${navigationMenuTriggerStyle()} font-medium`}>
+                  Blog
                 </Link>
               </NavigationMenuItem>
             </NavigationMenuList>
@@ -370,6 +363,8 @@ export default function HomeNav() {
         )}
       </AnimatePresence>
     </nav>
+    <div className="h-16 sm:h-20" />
+    </>
   );
 }
 

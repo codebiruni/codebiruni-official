@@ -37,6 +37,12 @@ const OrderSchema: Schema<IOrder> = new Schema(
       type: String,
       default: "",
     },
+
+    status: {
+      type: String,
+      enum: ["new", "contacted", "in_discussion", "converted", "closed"],
+      default: "new",
+    },
   },
   {
     timestamps: true,

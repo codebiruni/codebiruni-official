@@ -61,6 +61,8 @@ UserSchema.pre<IUserDocument>("save", async function (next) {
   }
 });
 
-const User = mongoose.model<IUserDocument>("User", UserSchema);
+const User =
+  (mongoose.models.User as mongoose.Model<IUserDocument>) ||
+  mongoose.model<IUserDocument>("User", UserSchema);
 
 export default User;

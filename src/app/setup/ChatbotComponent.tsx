@@ -1,5 +1,6 @@
 'use client'
 import React, { useState, useRef, useEffect } from 'react'
+import { usePathname } from 'next/navigation'
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
@@ -14,6 +15,7 @@ interface Message {
 }
 
 export default function ChatbotComponent() {
+  const pathName = usePathname()
   const [isOpen, setIsOpen] = useState(false)
   const [messages, setMessages] = useState<Message[]>([])
   const [input, setInput] = useState('')
@@ -260,6 +262,10 @@ export default function ChatbotComponent() {
       setMessages([welcomeMessage])
     }
   }, [isOpen, messages.length])
+
+  if (pathName?.startsWith('/dashboard') || pathName?.includes('storepage')) {
+    return null
+  }
 
   return (
     <>

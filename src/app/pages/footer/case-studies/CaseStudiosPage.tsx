@@ -46,7 +46,8 @@ export default function CaseStudiosPage() {
         "25% boost in conversion rates",
       ],
       tags: ["Performance", "Scalability", "E-commerce"],
-      image: "/cases/ecommerce-optimization.jpg",
+      image:
+        "https://images.unsplash.com/photo-1556742049-0a67e5572263?w=800&auto=format&fit=crop&q=60",
     },
     {
       id: 2,
@@ -62,7 +63,8 @@ export default function CaseStudiosPage() {
         "50+ integrated data sources",
       ],
       tags: ["Data", "Security", "Healthcare"],
-      image: "/cases/healthcare-analytics.jpg",
+      image:
+        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop&q=60",
     },
     {
       id: 3,
@@ -77,7 +79,8 @@ export default function CaseStudiosPage() {
         "60% faster onboarding",
       ],
       tags: ["UX Design", "Mobile", "Finance"],
-      image: "/cases/fintech-redesign.jpg",
+      image:
+        "https://images.unsplash.com/photo-1559526324-4b87b5e36e44?w=800&auto=format&fit=crop&q=60",
     },
     {
       id: 4,
@@ -92,7 +95,8 @@ export default function CaseStudiosPage() {
         "30% improvement in test scores",
       ],
       tags: ["EdTech", "LMS", "Web App"],
-      image: "/cases/edtech-platform.jpg",
+      image:
+        "https://images.unsplash.com/photo-1501504905252-473c47e087f8?w=800&auto=format&fit=crop&q=60",
     },
   ];
 

@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import HomeNav from "./default/home-nav/HomeNav";
@@ -15,6 +15,16 @@ const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
   subsets: ["latin"],
 });
+
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
+    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+  maximumScale: 5,
+};
 
 export const metadata: Metadata = {
   title: {
@@ -55,7 +65,7 @@ export const metadata: Metadata = {
     siteName: "Code Biruni",
     images: [
       {
-        url: "/og-image.jpg",
+        url: "/logo.png",
         width: 1200,
         height: 630,
         alt: "Code Biruni - Digital Solutions",
@@ -69,7 +79,7 @@ export const metadata: Metadata = {
     title: "Code Biruni - Building Digital Bridges Worldwide",
     description:
       "Custom software development and IT solutions tailored to your business needs.",
-    images: ["/twitter-image.jpg"],
+    images: ["/logo.png"],
     creator: "@codebiruni",
   },
   robots: {
@@ -93,17 +103,12 @@ export const metadata: Metadata = {
   icons: {
     icon: "/favicon.ico",
     shortcut: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
+    apple: "/logo.png",
     other: {
       rel: "apple-touch-icon-precomposed",
-      url: "/apple-touch-icon-precomposed.png",
+      url: "/logo.png",
     },
   },
-  manifest: "/site.webmanifest",
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
-  ],
   category: "technology",
 };
 
@@ -127,15 +132,9 @@ export default function RootLayout({
 
         {/* Favicon links */}
         <link rel="icon" href="/favicon.ico" type="image/x-icon" sizes="any" />
-        <link rel="icon" href="/icon.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="manifest" href="/site.webmanifest" />
+        <link rel="apple-touch-icon" href="/logo.png" />
 
         {/* Mobile viewport optimization */}
-        <meta
-          name="viewport"
-          content="width=device-width, initial-scale=1, maximum-scale=5"
-        />
         <meta name="mobile-web-app-capable" content="yes" />
 
         {/* PWA tags */}
@@ -149,7 +148,6 @@ export default function RootLayout({
 
         {/* Microsoft tags */}
         <meta name="msapplication-TileColor" content="#ffffff" />
-        <meta name="msapplication-config" content="/browserconfig.xml" />
 
         {/* Additional verification */}
         <meta
@@ -181,7 +179,7 @@ export default function RootLayout({
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
           <HomeNav />
           <ChatbotComponent />
-          <div className="pt-50 sm:pt-5">{children}</div>
+          <div>{children}</div>
           <HomeFooter />
         </ThemeProvider>
       </body>

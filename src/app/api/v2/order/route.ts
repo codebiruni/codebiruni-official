@@ -11,24 +11,28 @@ import { NextResponse } from "next/server";
 export async function GET(req: Request) {
   try {
     await connectDb();
-    const { search, projectType } = Object.fromEntries(
+    const { search, projectType, status } = Object.fromEntries(
       new URL(req.url).searchParams.entries()
     );
 
     const query: any = {};
 
-    // Search by name, number, email, or note
+    // Search by name, number, email, address (brand), or note
     if (search) {
       query.$or = [
         { name: { $regex: search, $options: "i" } },
         { number: { $regex: search, $options: "i" } },
         { email: { $regex: search, $options: "i" } },
+        { address: { $regex: search, $options: "i" } },
         { note: { $regex: search, $options: "i" } },
       ];
     }
 
     // Filter by projectType
     if (projectType) query.projectType = { $regex: projectType, $options: "i" };
+
+    // Filter by status
+    if (status && status !== "all") query.status = status;
 
     const results = await OrderModel.find(query).sort({ createdAt: -1 });
     return NextResponse.json({ success: true, data: results });

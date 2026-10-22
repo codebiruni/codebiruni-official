@@ -25,7 +25,7 @@ import { NavMain } from "./nav-main"
 import { NavDocuments } from "./nav-documents"
 import { NavSecondary } from "./nav-secondary"
 import { NavUser } from "./nav-user"
-import { Briefcase, Cable, DollarSign, FolderGit2, FolderKanban, HandCoins,  HelpCircle,  LayoutDashboard,  LayoutTemplate,  PcCase,  Phone,  ScanEye, ShoppingCart, Star, Target, Telescope, Transgender, UserPlus, Users } from "lucide-react"
+import { Briefcase, Cable, DollarSign, FolderGit2, FolderKanban, HandCoins, HelpCircle, LayoutDashboard, LayoutTemplate, PcCase, Phone, ScanEye, ShoppingCart, Star, Store, Target, Telescope, Transgender, UserPlus, Users } from "lucide-react"
 
 const data = {
   user: {
@@ -38,6 +38,11 @@ const data = {
     title: "Dashboard",
     url: "/dashboard/admin/",
     icon: LayoutDashboard,
+  },
+  {
+    title: "StorePage Leads",
+    url: "/dashboard/admin/storepage",
+    icon: Store,
   },
   {
     title: "Orders",

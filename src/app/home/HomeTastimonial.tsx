@@ -12,7 +12,8 @@ export default function HomeTestimonial() {
       id: 1,
       name: "Sarah Johnson",
       role: "CEO, TechSolutions Inc.",
-      avatar: "/avatars/01.png",
+      avatar:
+        "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
       rating: 5,
       content:
         "Code Biruni's digital transformation services revolutionized our e-commerce platform, delivering a 40% increase in conversion rates with their cutting-edge approach.",
@@ -21,7 +22,8 @@ export default function HomeTestimonial() {
       id: 2,
       name: "Michael Chen",
       role: "CTO, Finova Corp",
-      avatar: "/avatars/02.png",
+      avatar:
+        "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
       rating: 5,
       content:
         "Their cloud-native application development helped us scale to 1M+ users seamlessly. The architecture design was flawless and future-proof.",
@@ -30,7 +32,8 @@ export default function HomeTestimonial() {
       id: 3,
       name: "Amina Rahman",
       role: "Director, EduTech Foundation",
-      avatar: "/avatars/03.png",
+      avatar:
+        "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=150&auto=format&fit=crop&q=80",
       rating: 5,
       content:
         "The AI-powered education platform Code Biruni developed has transformed how we deliver content, with personalized learning paths for each student.",
@@ -39,7 +42,8 @@ export default function HomeTestimonial() {
       id: 4,
       name: "David Wilson",
       role: "Product Manager, BuildRight",
-      avatar: "/avatars/04.png",
+      avatar:
+        "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&auto=format&fit=crop&q=80",
       rating: 5,
       content:
         "Code Biruni's IoT solution with real-time analytics and predictive maintenance has saved us over $250k annually in operational costs.",
@@ -48,7 +52,8 @@ export default function HomeTestimonial() {
       id: 5,
       name: "Lisa Rodriguez",
       role: "Marketing Director, ShopEasy",
-      avatar: "/avatars/05.png",
+      avatar:
+        "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&auto=format&fit=crop&q=80",
       rating: 5,
       content:
         "Our new customer engagement platform developed by Code Biruni increased retention by 35% through hyper-personalized experiences.",

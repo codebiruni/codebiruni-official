@@ -24,7 +24,8 @@ export default function CaseStudyBanner() {
         "28% faster load times",
         "17% higher AOV",
       ],
-      image: "/images/ecommerce-case.jpg",
+      image:
+        "https://images.unsplash.com/photo-1556742049-0a67e5572263?w=800&auto=format&fit=crop&q=60",
     },
     {
       id: 2,
@@ -37,7 +38,8 @@ export default function CaseStudyBanner() {
         "75% reduction in admin time",
         "99.9% uptime",
       ],
-      image: "/images/healthcare-case.jpg",
+      image:
+        "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&auto=format&fit=crop&q=60",
     },
   ];
 

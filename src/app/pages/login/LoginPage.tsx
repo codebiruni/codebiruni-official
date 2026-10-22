@@ -1,4 +1,8 @@
 "use client";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
+import { signIn } from "next-auth/react";
+import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -15,6 +19,9 @@ import {
 import SocialAuth from "../_SocialAuth/SocialSuth";
 
 export default function LoginPage() {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+
   const form = useForm({
     defaultValues: {
       email: "",
@@ -23,13 +30,31 @@ export default function LoginPage() {
     },
   });
 
-  function onSubmit(data: {
+  async function onSubmit(data: {
     email: string;
     password: string;
     remember: boolean;
   }) {
-    console.log("Login form submitted:", data);
-    // Add your login logic here
+    setIsLoading(true);
+    try {
+      const res = await signIn("credentials", {
+        redirect: false,
+        email: data.email,
+        password: data.password,
+      });
+
+      if (res?.error) {
+        toast.error(res.error || "Invalid email or password");
+      } else if (res?.ok) {
+        toast.success("Logged in successfully!");
+        router.push("/dashboard/admin");
+        router.refresh();
+      }
+    } catch {
+      toast.error("An unexpected error occurred during login");
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -118,8 +143,8 @@ export default function LoginPage() {
               </div>
 
               {/* Login Button */}
-              <Button type="submit" className="w-full h-11">
-                Sign In
+              <Button type="submit" disabled={isLoading} className="w-full h-11">
+                {isLoading ? "Signing in..." : "Sign In"}
               </Button>
             </form>
           </Form>

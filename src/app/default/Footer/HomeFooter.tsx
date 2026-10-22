@@ -10,9 +10,9 @@ export default function HomeFooter() {
   const currentYear = new Date().getFullYear();
   const pathName =  usePathname()
 
-  if (pathName.startsWith('/dashboard')) {
-  return null;
-}
+  if (pathName?.startsWith('/dashboard') || pathName?.includes('storepage')) {
+    return null;
+  }
 
   const footerSections = {
     product: [
