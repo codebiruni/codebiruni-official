@@ -98,72 +98,63 @@ export default function StorePageClient() {
 
 
       <div className="sp">
-        {/* Navigation */}
-        <div
-          className="w"
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-            paddingTop: "20px",
-            paddingBottom: "20px",
-          }}
-        >
-          <div
-            style={{
-              display: "flex",
-              alignItems: "center",
-              gap: "10px",
-              fontWeight: 700,
-              fontSize: "26px",
-            }}
-          >
-            <Image
-              src="/assets/e8d7b1bc09e2e2bff385ba623d2ca01a.png"
-              alt="StorePage logo"
-              width={48}
-              height={48}
-              style={{ borderRadius: "50%" }}
-            />
-            <span style={{ color: "#000000" }}>StorePage</span>
+        {/* Sticky Mobile-Friendly Navigation */}
+        <header className="sp-header">
+          <div className="w sp-nav">
+            <div className="sp-logo">
+              <Image
+                src="/assets/e8d7b1bc09e2e2bff385ba623d2ca01a.png"
+                alt="StorePage logo"
+                width={40}
+                height={40}
+                style={{ borderRadius: "50%", flexShrink: 0 }}
+                priority
+              />
+              <span>StorePage</span>
+            </div>
+            <div className="sp-nav-actions">
+              <a
+                href="https://wa.me/8801602957691"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="wa-nav-btn"
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  gap: "7px",
+                  minHeight: "42px",
+                  padding: "0 14px",
+                  borderRadius: "12px",
+                  border: "2px solid #25D366",
+                  color: "#1B6B3A",
+                  background: "#ffffff",
+                  fontWeight: 600,
+                  fontSize: "14px",
+                  textDecoration: "none",
+                  cursor: "pointer",
+                }}
+              >
+                <WhatsAppIcon size={18} color="#25D366" />
+                <span className="wa-nav-text">WhatsApp</span>
+              </a>
+              <a
+                href="#order"
+                className="btn nav-order-btn"
+                style={{
+                  minHeight: "42px",
+                  fontSize: "15px",
+                  padding: "0 18px",
+                  boxShadow: "none",
+                }}
+              >
+                অর্ডার করুন
+              </a>
+            </div>
           </div>
-          <div style={{ display: "flex", gap: "14px", alignItems: "center" }}>
-            <a
-              href="https://wa.me/8801602957691"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="wa-nav-btn"
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "8px",
-                minHeight: "44px",
-                padding: "0 18px",
-                borderRadius: "12px",
-                border: "2px solid #25D366",
-                color: "#1B6B3A",
-                background: "#ffffff",
-                fontWeight: 600,
-                fontSize: "15px",
-                textDecoration: "none",
-                cursor: "pointer",
-              }}
-            >
-              <WhatsAppIcon size={18} color="#25D366" />
-              <span className="wa-nav-text">WhatsApp: +8801602957691</span>
-            </a>
-            <a
-              href="#order"
-              className="btn"
-              style={{ minHeight: "44px", fontSize: "16px", padding: "0px 22px", boxShadow: "none" }}
-            >
-              অর্ডার করুন
-            </a>
-          </div>
-        </div>
+        </header>
 
         {/* Hero Section */}
-        <div className="w" style={{ paddingTop: "48px", paddingBottom: "96px" }}>
+        <div className="w hero-sec">
           <div className="g2">
             <div style={{ display: "flex", flexDirection: "column", gap: "26px", alignItems: "flex-start" }}>
               <span className="tag">বার বার ল্যান্ডিং পেইজে টাকা নষ্ট হচ্ছে?</span>
@@ -326,7 +317,12 @@ export default function StorePageClient() {
           </div>
           <div className="g5">
             {/* 1. Store: Customer Browses */}
-            <div>
+            <div className="step-card">
+              <div className="step-header">
+                <span className="step-badge">১. সাধারণ অনলাইন শপ</span>
+                <h3 className="step-title">কাস্টমার সব প্রোডাক্ট ব্রাউজ করে</h3>
+                <p className="step-desc">প্রথাগত ই-কমার্স শপের মতো সব কালেকশন ও ক্যাটাগরি সাজানো থাকে</p>
+              </div>
               <div className="bf" style={{ overflow: "hidden", display: "flex", flexDirection: "column" }}>
                 <div
                   className="bar"
@@ -386,7 +382,6 @@ export default function StorePageClient() {
                   style={{
                     position: "relative",
                     width: "100%",
-                    height: "460px",
                     overflow: "hidden",
                     display: "flex",
                     alignItems: "center",
@@ -410,17 +405,26 @@ export default function StorePageClient() {
                   />
                 </div>
               </div>
-              <p style={{ textAlign: "center", marginTop: "14px", fontWeight: 600, color: "#44506B" }}>
-                ১. স্টোর: কাস্টমার ব্রাউজ করে
-              </p>
             </div>
-            <div className="arr">
-              <span className="pill">
-                →
-              </span>
+
+            {/* Smart Responsive Arrow Connector */}
+            <div className="step-arrow">
+              <div className="step-arrow-badge">
+                <span>বিজ্ঞাপনে ক্লিক করলে</span>
+                <span className="step-arrow-icon">
+                  <span className="step-arrow-desktop">→</span>
+                  <span className="step-arrow-mobile">↓</span>
+                </span>
+              </div>
             </div>
+
             {/* 2. Landing Page: Customer Orders */}
-            <div>
+            <div className="step-card">
+              <div className="step-header">
+                <span className="step-badge" style={{ background: "#E8F0FE", color: "#1A56DB" }}>২. ডেডিকেটেড সেলস পেজ</span>
+                <h3 className="step-title" style={{ color: "#1A56DB" }}>সরাসরি ১টি প্রোডাক্টের ল্যান্ডিং পেজে অর্ডার</h3>
+                <p className="step-desc">কোনো বিভ্রান্তি নেই — একটাই প্রোডাক্ট, একটাই ডিসকাউন্ট অফার, ১-ক্লিকে অর্ডার</p>
+              </div>
               <div
                 className="bf"
                 style={{
@@ -487,7 +491,6 @@ export default function StorePageClient() {
                   style={{
                     position: "relative",
                     width: "100%",
-                    height: "460px",
                     background: "#fff",
                     overflow: "hidden",
                   }}
@@ -505,333 +508,343 @@ export default function StorePageClient() {
                   />
                 </div>
               </div>
-              <p style={{ textAlign: "center", marginTop: "14px", fontWeight: 600, color: "#3F6DCF" }}>
-                ২. ল্যান্ডিং পেজ: কাস্টমার অর্ডার করে
-              </p>
             </div>
           </div>
         </div>
 
         {/* Dashboard Features Section */}
         <div style={{ background: "#fff", borderTop: "1px solid #DDE5F5", borderBottom: "1px solid #DDE5F5" }} className="sec">
-          <div className="w" style={{ display: "grid", gap: "88px" }}>
-            <h2 style={{ maxWidth: "760px" }}>ড্যাশবোর্ডে যা দেখবেন, সবই অর্ডার বাঁচায় ও লাভ বাড়ায়</h2>
+          <div className="w">
+            <h2 style={{ maxWidth: "760px", marginBottom: "48px" }}>
+              ড্যাশবোর্ডে যা দেখবেন, সবই অর্ডার বাঁচায় ও লাভ বাড়ায়
+            </h2>
 
-            {/* Item 1: Courier Booking */}
-            <div className="g2 mob-full" style={{ width: "100%", maxWidth: "100%" }}>
-              <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-                <span className="tag" style={{ alignSelf: "flex-start" }}>১-ক্লিকে কুরিয়ার বুকিং</span>
-                <h3 style={{ fontSize: "30px", lineHeight: 1.3 }}>কপি-পেস্ট ছাড়া বুকিং, বারকোডসহ ইনভয়েস</h3>
-                <p style={{ fontSize: "19px", color: "#44506B" }}>
-                  পাঠাও ও স্টেডফাস্টে এক ক্লিকে পার্সেল বুক করুন এবং প্রফেশনাল ইনভয়েস প্রিন্ট করুন।
-                </p>
-              </div>
-              <div className="bf">
-                <div className="bar">ডেমো ডেটা · ইনভয়েস</div>
-                <div style={{ padding: "20px", display: "grid", gap: "12px" }}>
-                  <div style={{ display: "flex", justifyContent: "space-between" }}>
-                    <b>#1024 · Ultra 2 Smartwatch</b>
-                    <b style={{ color: "#3F6DCF" }}>৳২,৪৯০</b>
-                  </div>
-                  <div
-                    style={{
-                      height: "46px",
-                      background: "repeating-linear-gradient(90deg,#0F1B3D 0 2px,#fff 2px 5px,#0F1B3D 5px 6px,#fff 6px 10px)",
-                      borderRadius: "4px",
-                    }}
-                  ></div>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
-                    <div className="btn" style={{ minHeight: "48px", fontSize: "16px", boxShadow: "none" }}>
-                      পাঠাও বুক করুন
-                    </div>
-                    <div className="btn2" style={{ minHeight: "48px", fontSize: "16px" }}>
-                      স্টেডফাস্ট
+            <div className="feature-grid">
+              {/* Item 1: Courier Booking */}
+              <div className="feature-row">
+                <div className="feature-content">
+                  <span className="tag">১-ক্লিকে কুরিয়ার বুকিং</span>
+                  <h3 style={{ fontSize: "30px", lineHeight: 1.3 }}>কপি-পেস্ট ছাড়া বুকিং, বারকোডসহ ইনভয়েস</h3>
+                  <p style={{ fontSize: "19px", color: "#44506B" }}>
+                    পাঠাও ও স্টেডফাস্টে এক ক্লিকে পার্সেল বুক করুন এবং প্রফেশনাল ইনভয়েস প্রিন্ট করুন।
+                  </p>
+                </div>
+                <div className="feature-visual">
+                  <div className="bf">
+                    <div className="bar">ডেমো ডেটা · ইনভয়েস</div>
+                    <div style={{ padding: "20px", display: "grid", gap: "12px" }}>
+                      <div style={{ display: "flex", justifyContent: "space-between" }}>
+                        <b>#1024 · Ultra 2 Smartwatch</b>
+                        <b style={{ color: "#3F6DCF" }}>৳২,৪৯০</b>
+                      </div>
+                      <div
+                        style={{
+                          height: "46px",
+                          background: "repeating-linear-gradient(90deg,#0F1B3D 0 2px,#fff 2px 5px,#0F1B3D 5px 6px,#fff 6px 10px)",
+                          borderRadius: "4px",
+                        }}
+                      ></div>
+                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px" }}>
+                        <div className="btn" style={{ minHeight: "48px", fontSize: "16px", boxShadow: "none" }}>
+                          পাঠাও বুক করুন
+                        </div>
+                        <div className="btn2" style={{ minHeight: "48px", fontSize: "16px" }}>
+                          স্টেডফাস্ট
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </div>
 
-            {/* Item 2: Instant Lead Capture */}
-            <div className="g2">
-              <div className="bf">
-                <div className="bar">ডেমো ডেটা · লাইভ লিড</div>
-                <div style={{ padding: "8px 20px" }}>
+              {/* Item 2: Instant Lead Capture (Title First, Demo Second) */}
+              <div className="feature-row alt">
+                <div className="feature-content">
+                  <span className="tag">ইনস্ট্যান্ট লিড ক্যাপচার</span>
+                  <h3 style={{ fontSize: "30px", lineHeight: 1.3 }}>অর্ডার শেষ না করলেও নম্বর আপনার কাছে</h3>
+                  <p style={{ fontSize: "19px", color: "#44506B" }}>
+                    নাম বা নম্বর টাইপ করলেই লিড ড্যাশবোর্ডে। সাথে সাথে কল দিয়ে ড্রপ হওয়া কাস্টমার ফিরিয়ে আনুন।
+                  </p>
+                </div>
+                <div className="feature-visual">
+                  <div className="bf">
+                    <div className="bar">ডেমো ডেটা · লাইভ লিড</div>
+                    <div style={{ padding: "8px 20px" }}>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          padding: "12px 0",
+                          borderBottom: "1px solid #DDE5F5",
+                        }}
+                      >
+                        <div>
+                          <b>সাকিব হাসান</b>
+                          <div style={{ fontSize: "14px", color: "#44506B" }}>Ultra 2 Smartwatch</div>
+                        </div>
+                        <span className="pill">অসম্পূর্ণ</span>
+                      </div>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          padding: "12px 0",
+                          borderBottom: "1px solid #DDE5F5",
+                        }}
+                      >
+                        <div>
+                          <b>নুসরাত জাহান</b>
+                          <div style={{ fontSize: "14px", color: "#44506B" }}>Cotton Panjabi</div>
+                        </div>
+                        <span className="chip ok">কনফার্মড</span>
+                      </div>
+                      <div
+                        style={{
+                          display: "flex",
+                          justifyContent: "space-between",
+                          alignItems: "center",
+                          padding: "12px 0",
+                        }}
+                      >
+                        <div>
+                          <b>রাকিব আহমেদ</b>
+                          <div style={{ fontSize: "14px", color: "#44506B" }}>Power Bank</div>
+                        </div>
+                        <span className="pill">অসম্পূর্ণ</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Item 3: Ad Tracking & Analytics (Title First, Demo Second) */}
+              <div className="feature-row alt">
+                <div className="feature-content">
+                  <span className="tag">অ্যাড ট্র্যাকিং ও অ্যানালিটিক্স</span>
+                  <h3 style={{ fontSize: "30px", lineHeight: 1.3 }}>কোন প্রোডাক্ট লাভ দিচ্ছে, এক নজরে</h3>
+                  <p style={{ fontSize: "19px", color: "#44506B" }}>
+                    Meta Pixel, Conversion API ও GA4 সহ রিয়েল-টাইম সেলস ও নেট প্রফিট রিপোর্ট।
+                  </p>
+                </div>
+                <div className="feature-visual">
+                  <div className="bf">
+                    <div className="bar">ডেমো ডেটা · রিয়েল-টাইম অ্যানালিটিক্স</div>
+                    <div style={{ padding: "20px" }}>
+                      <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px", marginBottom: "16px" }}>
+                        <div className="tile">
+                          অর্ডার<br />
+                          <b style={{ fontSize: "22px" }}>১২৮</b>
+                        </div>
+                        <div className="tile">
+                          নেট প্রফিট<br />
+                          <b style={{ fontSize: "22px", color: "#3F6DCF" }}>৳৪৮,৫০০</b>
+                        </div>
+                      </div>
+                      <div style={{ display: "flex", alignItems: "flex-end", gap: "10px", height: "110px" }}>
+                        <div style={{ flex: 1, height: "40%", background: "#BFD0F7", borderRadius: "6px" }}></div>
+                        <div style={{ flex: 1, height: "55%", background: "#BFD0F7", borderRadius: "6px" }}></div>
+                        <div style={{ flex: 1, height: "48%", background: "#BFD0F7", borderRadius: "6px" }}></div>
+                        <div style={{ flex: 1, height: "75%", background: "#7F9FE0", borderRadius: "6px" }}></div>
+                        <div style={{ flex: 1, height: "68%", background: "#7F9FE0", borderRadius: "6px" }}></div>
+                        <div style={{ flex: 1, height: "100%", background: "#3F6DCF", borderRadius: "6px" }}></div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Item 4: Mobile App (PWA) */}
+              <div className="feature-row">
+                <div className="feature-content">
+                  <span className="tag">মোবাইল অ্যাপ (PWA)</span>
+                  <h3 style={{ fontSize: "30px", lineHeight: 1.3 }}>কাস্টমার ফোনে অ্যাপের মতো ইনস্টল করবে</h3>
+                  <p style={{ fontSize: "19px", color: "#44506B" }}>
+                    প্লে স্টোরের ঝামেলা ছাড়াই। Next.js 15 ও React 19 দিয়ে তৈরি, তাই পেজ পলকে লোড হয়।
+                  </p>
+                </div>
+                <div className="feature-visual">
                   <div
                     style={{
                       display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      padding: "12px 0",
-                      borderBottom: "1px solid #DDE5F5",
+                      justifyContent: "center",
+                      backgroundColor: "transparent",
+                      width: "100%",
+                      maxWidth: "471px",
+                      margin: "0 auto",
                     }}
                   >
-                    <div>
-                      <b>সাকিব হাসান</b>
-                      <div style={{ fontSize: "14px", color: "#44506B" }}>Ultra 2 Smartwatch</div>
+                    <div
+                      style={{
+                        width: "240px",
+                        height: "480px",
+                        border: "8px solid #16295C",
+                        borderRadius: "36px",
+                        background: "#000",
+                        overflow: "hidden",
+                        boxShadow: "0 24px 48px rgba(22,41,92,.25)",
+                        position: "relative",
+                      }}
+                    >
+                      <Image
+                        src="/assets/appss.jpeg"
+                        alt="StorePage Mobile App (PWA)"
+                        fill
+                        style={{ objectFit: "cover", objectPosition: "top" }}
+                        priority
+                      />
                     </div>
-                    <span className="pill">অসম্পূর্ণ</span>
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      padding: "12px 0",
-                      borderBottom: "1px solid #DDE5F5",
-                    }}
-                  >
-                    <div>
-                      <b>নুসরাত জাহান</b>
-                      <div style={{ fontSize: "14px", color: "#44506B" }}>Cotton Panjabi</div>
-                    </div>
-                    <span className="chip ok">কনফার্মড</span>
-                  </div>
-                  <div
-                    style={{
-                      display: "flex",
-                      justifyContent: "space-between",
-                      alignItems: "center",
-                      padding: "12px 0",
-                    }}
-                  >
-                    <div>
-                      <b>রাকিব আহমেদ</b>
-                      <div style={{ fontSize: "14px", color: "#44506B" }}>Power Bank</div>
-                    </div>
-                    <span className="pill">অসম্পূর্ণ</span>
                   </div>
                 </div>
               </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-                <span className="tag" style={{ alignSelf: "flex-start" }}>ইনস্ট্যান্ট লিড ক্যাপচার</span>
-                <h3 style={{ fontSize: "30px", lineHeight: 1.3 }}>অর্ডার শেষ না করলেও নম্বর আপনার কাছে</h3>
-                <p style={{ fontSize: "19px", color: "#44506B" }}>
-                  নাম বা নম্বর টাইপ করলেই লিড ড্যাশবোর্ডে। সাথে সাথে কল দিয়ে ড্রপ হওয়া কাস্টমার ফিরিয়ে আনুন।
-                </p>
-              </div>
-            </div>
 
-            {/* Item 3: Ad Tracking & Analytics */}
-            <div className="g2">
-              <div className="bf">
-                <div className="bar">ডেমো ডেটা · রিয়েল-টাইম অ্যানালিটিক্স</div>
-                <div style={{ padding: "20px" }}>
-                  <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "10px", marginBottom: "16px" }}>
-                    <div className="tile">
-                      অর্ডার<br />
-                      <b style={{ fontSize: "22px" }}>১২৮</b>
-                    </div>
-                    <div className="tile">
-                      নেট প্রফিট<br />
-                      <b style={{ fontSize: "22px", color: "#3F6DCF" }}>৳৪৮,৫০০</b>
-                    </div>
-                  </div>
-                  <div style={{ display: "flex", alignItems: "flex-end", gap: "10px", height: "110px" }}>
-                    <div style={{ flex: 1, height: "40%", background: "#BFD0F7", borderRadius: "6px" }}></div>
-                    <div style={{ flex: 1, height: "55%", background: "#BFD0F7", borderRadius: "6px" }}></div>
-                    <div style={{ flex: 1, height: "48%", background: "#BFD0F7", borderRadius: "6px" }}></div>
-                    <div style={{ flex: 1, height: "75%", background: "#7F9FE0", borderRadius: "6px" }}></div>
-                    <div style={{ flex: 1, height: "68%", background: "#7F9FE0", borderRadius: "6px" }}></div>
-                    <div style={{ flex: 1, height: "100%", background: "#3F6DCF", borderRadius: "6px" }}></div>
-                  </div>
-                </div>
-              </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-                <span className="tag" style={{ alignSelf: "flex-start" }}>অ্যাড ট্র্যাকিং ও অ্যানালিটিক্স</span>
-                <h3 style={{ fontSize: "30px", lineHeight: 1.3 }}>কোন প্রোডাক্ট লাভ দিচ্ছে, এক নজরে</h3>
-                <p style={{ fontSize: "19px", color: "#44506B" }}>
-                  Meta Pixel, Conversion API ও GA4 সহ রিয়েল-টাইম সেলস ও নেট প্রফিট রিপোর্ট।
-                </p>
-              </div>
-            </div>
-
-            {/* Item 4: Mobile App (PWA) */}
-            <div className="g2">
-              <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-                <span className="tag" style={{ alignSelf: "flex-start" }}>মোবাইল অ্যাপ (PWA)</span>
-                <h3 style={{ fontSize: "30px", lineHeight: 1.3 }}>কাস্টমার ফোনে অ্যাপের মতো ইনস্টল করবে</h3>
-                <p style={{ fontSize: "19px", color: "#44506B" }}>
-                  প্লে স্টোরের ঝামেলা ছাড়াই। Next.js 15 ও React 19 দিয়ে তৈরি, তাই পেজ পলকে লোড হয়।
-                </p>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  justifyContent: "center",
-                  backgroundColor: "transparent",
-                  width: "100%",
-                  maxWidth: "471px",
-                  margin: "0 auto",
-                }}
-              >
-                <div
-                  style={{
-                    width: "240px",
-                    height: "480px",
-                    border: "8px solid #16295C",
-                    borderRadius: "36px",
-                    background: "#000",
-                    overflow: "hidden",
-                    boxShadow: "0 24px 48px rgba(22,41,92,.25)",
-                    position: "relative",
-                  }}
-                >
-                  <Image
-                    src="/assets/appss.jpeg"
-                    alt="StorePage Mobile App (PWA)"
-                    fill
-                    style={{ objectFit: "cover", objectPosition: "top" }}
-                    priority
-                  />
-                </div>
-              </div>
-            </div>
-
-            {/* Item 5: Instant Telegram Order Notice */}
-            <div className="g2">
-              <div className="bf">
-                <div
-                  className="bar"
-                  style={{
-                    display: "flex",
-                    justifyContent: "space-between",
-                    alignItems: "center",
-                  }}
-                >
-                  <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
-                    <span className="dot" style={{ background: "#229ED9" }}></span>
-                    <span className="dot" style={{ background: "#229ED9" }}></span>
-                    <span className="dot" style={{ background: "#229ED9" }}></span>
-                    <span style={{ marginLeft: "8px", fontWeight: 600 }}>ডেমো ডেটা · টেলিগ্রাম বট নোটিশ</span>
-                  </div>
-                  <span
-                    style={{
-                      display: "inline-flex",
-                      alignItems: "center",
-                      gap: "5px",
-                      color: "#229ED9",
-                      fontWeight: 600,
-                      fontSize: "12px",
-                      background: "#E8F2FD",
-                      padding: "2px 8px",
-                      borderRadius: "6px",
-                    }}
-                  >
-                    <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#229ED9" }}></span>
-                    Telegram Live
+              {/* Item 5: Instant Telegram Order Notice (Title First, Demo Second) */}
+              <div className="feature-row alt">
+                <div className="feature-content">
+                  <span className="tag" style={{ alignSelf: "flex-start", background: "#E5F4FB", color: "#1C88BD" }}>
+                    ইনস্ট্যান্ট টেলিগ্রাম অ্যালার্ট
                   </span>
+                  <h3 style={{ fontSize: "30px", lineHeight: 1.3 }}>
+                    অর্ডার আসার সাথে সাথে টেলিগ্রামে নোটিফিকেশন
+                  </h3>
+                  <p style={{ fontSize: "19px", color: "#44506B" }}>
+                    কাস্টমার অর্ডার প্লেস করা মাত্রই ১ সেকেন্ডে অ্যাডমিন ও ম্যানেজমেন্টের টেলিগ্রাম গ্রুপে চলে আসবে সম্পূর্ণ বিবরণ। কোনো অর্ডার আর মিস হবে না — সাথে সাথে কল দিয়ে কনফার্ম করে দ্রুত ডেলিভারি নিশ্চিত করুন।
+                  </p>
                 </div>
-                <div style={{ padding: "18px 20px", display: "grid", gap: "12px", background: "#F5F8FC" }}>
-                  <div
-                    style={{
-                      background: "#fff",
-                      border: "1px solid #DDE5F5",
-                      borderRadius: "14px",
-                      padding: "16px",
-                      boxShadow: "0 4px 14px rgba(34,158,217,0.12)",
-                    }}
-                  >
-                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "10px" }}>
-                      <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                <div className="feature-visual">
+                  <div className="bf">
+                    <div
+                      className="bar"
+                      style={{
+                        display: "flex",
+                        justifyContent: "space-between",
+                        alignItems: "center",
+                      }}
+                    >
+                      <div style={{ display: "flex", alignItems: "center", gap: "6px" }}>
+                        <span className="dot" style={{ background: "#229ED9" }}></span>
+                        <span className="dot" style={{ background: "#229ED9" }}></span>
+                        <span className="dot" style={{ background: "#229ED9" }}></span>
+                        <span style={{ marginLeft: "8px", fontWeight: 600 }}>ডেমো ডেটা · টেলিগ্রাম বট নোটিশ</span>
+                      </div>
+                      <span
+                        style={{
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "5px",
+                          color: "#229ED9",
+                          fontWeight: 600,
+                          fontSize: "12px",
+                          background: "#E8F2FD",
+                          padding: "2px 8px",
+                          borderRadius: "6px",
+                        }}
+                      >
+                        <span style={{ width: "7px", height: "7px", borderRadius: "50%", background: "#229ED9" }}></span>
+                        Telegram Live
+                      </span>
+                    </div>
+                    <div style={{ padding: "18px 20px", display: "grid", gap: "12px", background: "#F5F8FC" }}>
+                      <div
+                        style={{
+                          background: "#fff",
+                          border: "1px solid #DDE5F5",
+                          borderRadius: "14px",
+                          padding: "16px",
+                          boxShadow: "0 4px 14px rgba(34,158,217,0.12)",
+                        }}
+                      >
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: "10px" }}>
+                          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+                            <div
+                              style={{
+                                width: "34px",
+                                height: "34px",
+                                borderRadius: "50%",
+                                background: "linear-gradient(135deg, #2AABEE, #229ED9)",
+                                color: "#fff",
+                                display: "flex",
+                                alignItems: "center",
+                                justifyContent: "center",
+                                fontSize: "17px",
+                                fontWeight: 700,
+                              }}
+                            >
+                              ✈
+                            </div>
+                            <div>
+                              <b style={{ fontSize: "15px", color: "#0F1B3D" }}>StorePage Order Bot</b>
+                              <div style={{ fontSize: "11px", color: "#229ED9", fontWeight: 600 }}>BOT · এইমাত্র প্রাপ্ত</div>
+                            </div>
+                          </div>
+                          <span className="chip ok" style={{ fontSize: "12px" }}>নতুন অর্ডার #1025</span>
+                        </div>
+
                         <div
                           style={{
-                            width: "34px",
-                            height: "34px",
-                            borderRadius: "50%",
-                            background: "linear-gradient(135deg, #2AABEE, #229ED9)",
-                            color: "#fff",
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "center",
-                            fontSize: "17px",
-                            fontWeight: 700,
+                            fontSize: "14px",
+                            lineHeight: "1.65",
+                            color: "#1F2D4D",
+                            borderTop: "1px solid #EEF2FB",
+                            paddingTop: "10px",
+                            display: "grid",
+                            gap: "4px",
                           }}
                         >
-                          ✈
+                          <div><b>🛍 প্রোডাক্ট:</b> Ultra 2 Smartwatch</div>
+                          <div><b>💰 মোট মূল্য:</b> <span style={{ color: "#3F6DCF", fontWeight: 700 }}>৳২,৪৯০</span> (ক্যাশ অন ডেলিভারি)</div>
+                          <div><b>👤 কাস্টমার:</b> সাকিব হাসান</div>
+                          <div><b>📱 ফোন:</b> 01712-XXXXXX</div>
+                          <div><b>📍 ঠিকানা:</b> বাড়ি #১২, রোড #৪, মিরপুর ১০, ঢাকা</div>
                         </div>
-                        <div>
-                          <b style={{ fontSize: "15px", color: "#0F1B3D" }}>StorePage Order Bot</b>
-                          <div style={{ fontSize: "11px", color: "#229ED9", fontWeight: 600 }}>BOT · এইমাত্র প্রাপ্ত</div>
+
+                        <div
+                          style={{
+                            display: "grid",
+                            gridTemplateColumns: "1fr 1fr",
+                            gap: "8px",
+                            marginTop: "12px",
+                            paddingTop: "10px",
+                            borderTop: "1px solid #EEF2FB",
+                          }}
+                        >
+                          <div
+                            style={{
+                              background: "#E8F2FD",
+                              color: "#229ED9",
+                              borderRadius: "8px",
+                              padding: "8px 12px",
+                              fontSize: "13px",
+                              fontWeight: 600,
+                              textAlign: "center",
+                              cursor: "pointer",
+                            }}
+                          >
+                            ১-ক্লিকে কল দিন 📞
+                          </div>
+                          <div
+                            onClick={() => setIsDemoModalOpen(true)}
+                            style={{
+                              background: "#3F6DCF",
+                              color: "#fff",
+                              borderRadius: "8px",
+                              padding: "8px 12px",
+                              fontSize: "13px",
+                              fontWeight: 600,
+                              textAlign: "center",
+                              cursor: "pointer",
+                            }}
+                          >
+                            ড্যাশবোর্ডে দেখুন ↗
+                          </div>
                         </div>
-                      </div>
-                      <span className="chip ok" style={{ fontSize: "12px" }}>নতুন অর্ডার #1025</span>
-                    </div>
-
-                    <div
-                      style={{
-                        fontSize: "14px",
-                        lineHeight: "1.65",
-                        color: "#1F2D4D",
-                        borderTop: "1px solid #EEF2FB",
-                        paddingTop: "10px",
-                        display: "grid",
-                        gap: "4px",
-                      }}
-                    >
-                      <div><b>🛍 প্রোডাক্ট:</b> Ultra 2 Smartwatch</div>
-                      <div><b>💰 মোট মূল্য:</b> <span style={{ color: "#3F6DCF", fontWeight: 700 }}>৳২,৪৯০</span> (ক্যাশ অন ডেলিভারি)</div>
-                      <div><b>👤 কাস্টমার:</b> সাকিব হাসান</div>
-                      <div><b>📱 ফোন:</b> 01712-XXXXXX</div>
-                      <div><b>📍 ঠিকানা:</b> বাড়ি #১২, রোড #৪, মিরপুর ১০, ঢাকা</div>
-                    </div>
-
-                    <div
-                      style={{
-                        display: "grid",
-                        gridTemplateColumns: "1fr 1fr",
-                        gap: "8px",
-                        marginTop: "12px",
-                        paddingTop: "10px",
-                        borderTop: "1px solid #EEF2FB",
-                      }}
-                    >
-                      <div
-                        style={{
-                          background: "#E8F2FD",
-                          color: "#229ED9",
-                          borderRadius: "8px",
-                          padding: "8px 12px",
-                          fontSize: "13px",
-                          fontWeight: 600,
-                          textAlign: "center",
-                          cursor: "pointer",
-                        }}
-                      >
-                        ১-ক্লিকে কল দিন 📞
-                      </div>
-                      <div
-                        onClick={() => setIsDemoModalOpen(true)}
-                        style={{
-                          background: "#3F6DCF",
-                          color: "#fff",
-                          borderRadius: "8px",
-                          padding: "8px 12px",
-                          fontSize: "13px",
-                          fontWeight: 600,
-                          textAlign: "center",
-                          cursor: "pointer",
-                        }}
-                      >
-                        ড্যাশবোর্ডে দেখুন ↗
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-              <div style={{ display: "flex", flexDirection: "column", gap: "14px" }}>
-                <span className="tag" style={{ alignSelf: "flex-start", background: "#E5F4FB", color: "#1C88BD" }}>
-                  ইনস্ট্যান্ট টেলিগ্রাম অ্যালার্ট
-                </span>
-                <h3 style={{ fontSize: "30px", lineHeight: 1.3 }}>
-                  অর্ডার আসার সাথে সাথে টেলিগ্রামে নোটিফিকেশন
-                </h3>
-                <p style={{ fontSize: "19px", color: "#44506B" }}>
-                  কাস্টমার অর্ডার প্লেস করা মাত্রই ১ সেকেন্ডে অ্যাডমিন ও ম্যানেজমেন্টের টেলিগ্রাম গ্রুপে চলে আসবে সম্পূর্ণ বিবরণ। কোনো অর্ডার আর মিস হবে না — সাথে সাথে কল দিয়ে কনফার্ম করে দ্রুত ডেলিভারি নিশ্চিত করুন।
-                </p>
-              </div>
             </div>
-
           </div>
         </div>
 
@@ -932,22 +945,7 @@ export default function StorePageClient() {
                   href="https://wa.me/8801602957691"
                   target="_blank"
                   rel="noopener noreferrer"
-                  style={{
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "10px",
-                    background: "#ffffff",
-                    color: "#3F6DCF",
-                    fontWeight: 700,
-                    fontSize: "18px",
-                    minHeight: "52px",
-                    padding: "0 28px",
-                    borderRadius: "14px",
-                    textDecoration: "none",
-                    boxShadow: "0 6px 20px rgba(0, 0, 0, 0.12)",
-                    width: "fit-content",
-                    transition: "transform 0.15s ease",
-                  }}
+                  className="order-wa-link"
                 >
                   <WhatsAppIcon size={22} color="#25D366" />
                   <span>WhatsApp করুন: +8801602957691</span>
@@ -955,14 +953,7 @@ export default function StorePageClient() {
               </div>
               <form
                 onSubmit={handleSubmit}
-                style={{
-                  background: "#fff",
-                  color: "#0F1B3D",
-                  borderRadius: "22px",
-                  padding: "30px",
-                  display: "grid",
-                  gap: "14px",
-                }}
+                className="order-form-card"
               >
                 <label style={{ fontWeight: 600 }}>
                   আপনার নাম *
