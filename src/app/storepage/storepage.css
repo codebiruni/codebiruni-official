@@ -45,7 +45,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 0;
+  padding: 14px 16px;
 }
 .sp .sp-logo {
   display: flex;
@@ -54,11 +54,13 @@
   font-weight: 700;
   font-size: 24px;
   color: #0F1B3D;
+  padding-left: 6px;
 }
 .sp .sp-nav-actions {
   display: flex;
   gap: 12px;
   align-items: center;
+  padding-right: 6px;
 }
 .sp .wa-nav-btn {
   display: inline-flex;
@@ -655,6 +657,9 @@
   }
   
   /* Step Section on Tablet */
+  .sp .sp-nav {
+    padding: 14px 12px;
+  }
   .sp .g5 {
     grid-template-columns: 1fr !important;
     gap: 24px !important;
@@ -717,9 +722,9 @@
    =================================================== */
 
 @media (max-width: 640px) {
-  /* Generous 20px Screen Padding & Balanced Vertical Spacing */
+  /* Generous 24px Screen Padding & Balanced Vertical Spacing */
   .sp .w {
-    padding: 0 20px;
+    padding: 0 24px;
   }
   .sp .sec {
     padding: 52px 0;
@@ -729,13 +734,17 @@
     padding-bottom: 52px !important;
   }
 
-  /* Navigation on Mobile: Clean 20px Gutter & Sized Buttons */
+  /* Navigation on Mobile: Generous Inset From Left & Right Screen Edges */
+  .sp .sp-header {
+    padding: 0 4px;
+  }
   .sp .sp-nav {
-    padding: 12px 0;
+    padding: 12px 10px;
   }
   .sp .sp-logo {
     font-size: 20px;
     gap: 8px;
+    padding-left: 2px;
   }
   .sp .sp-logo img {
     width: 34px !important;
@@ -743,6 +752,7 @@
   }
   .sp .sp-nav-actions {
     gap: 8px;
+    padding-right: 2px;
   }
   .sp .wa-nav-btn {
     width: 40px !important;
@@ -923,6 +933,9 @@
 @media (max-width: 360px) {
   .sp .w {
     padding: 0 16px;
+  }
+  .sp .sp-nav {
+    padding: 10px 4px;
   }
   .sp .hero-ctas {
     grid-template-columns: 1fr !important;
