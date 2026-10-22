@@ -103,11 +103,8 @@
 
 /* ---------- Header ---------- */
 .sp .sp-header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  background: rgba(244, 247, 253, 0.98);
-  border-bottom: 1px solid #dde5f5;
+  position: relative;
+  z-index: 10;
   width: 100%;
 }
 
@@ -1459,6 +1456,7 @@
 
   .sp .sp-nav {
     padding: 10px 14px;
+    margin-top: 2px;
   }
 
   .sp .sp-logo {
@@ -1473,6 +1471,7 @@
 
   .sp .sp-nav-actions {
     gap: 8px;
+    margin-top: 2px;
   }
 
   .sp .wa-nav-btn {

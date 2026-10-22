@@ -61,7 +61,7 @@ function LazyFrame({ src, title, idle = false }: { src: string; title: string; i
 
     const afterLoad = () => {
       if ("requestIdleCallback" in window) {
-        idleId = window.requestIdleCallback(observe, { timeout: 3000 });
+        (window as Window & { requestIdleCallback: any }).requestIdleCallback(observe, { timeout: 3000 });
       } else {
         timeoutId = window.setTimeout(observe, 1500);
       }
@@ -183,7 +183,7 @@ export default function StorePageClient() {
 
   return (
     <div className={`sp ${hind.variable}`}>
-      {/* Sticky header */}
+      {/* Header */}
       <header className="sp-header">
         <div className="w sp-nav">
           <div className="sp-logo">
