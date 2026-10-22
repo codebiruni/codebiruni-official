@@ -106,6 +106,7 @@
   position: relative;
   z-index: 10;
   width: 100%;
+  margin-top: 14px;
 }
 
 .sp .sp-nav {
@@ -1456,7 +1457,7 @@
 
   .sp .sp-nav {
     padding: 10px 14px;
-    margin-top: 2px;
+    margin-top: 5px;
   }
 
   .sp .sp-logo {
@@ -1471,7 +1472,7 @@
 
   .sp .sp-nav-actions {
     gap: 8px;
-    margin-top: 2px;
+    margin-top: 5px;
   }
 
   .sp .wa-nav-btn {

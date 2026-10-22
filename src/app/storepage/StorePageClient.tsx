@@ -60,8 +60,12 @@ function LazyFrame({ src, title, idle = false }: { src: string; title: string; i
     };
 
     const afterLoad = () => {
-      if ("requestIdleCallback" in window) {
-        (window as Window & { requestIdleCallback: any }).requestIdleCallback(observe, { timeout: 3000 });
+      const win = window as Window & {
+        requestIdleCallback?: (cb: () => void, options?: { timeout: number }) => number;
+        cancelIdleCallback?: (id: number) => void;
+      };
+      if (typeof win.requestIdleCallback === "function") {
+        idleId = win.requestIdleCallback(observe, { timeout: 3000 });
       } else {
         timeoutId = window.setTimeout(observe, 1500);
       }
