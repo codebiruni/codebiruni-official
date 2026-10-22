@@ -105,8 +105,8 @@ export default function StorePageClient() {
               <Image
                 src="/assets/e8d7b1bc09e2e2bff385ba623d2ca01a.png"
                 alt="StorePage logo"
-                width={40}
-                height={40}
+                width={38}
+                height={38}
                 style={{ borderRadius: "50%", flexShrink: 0 }}
                 priority
               />
@@ -118,21 +118,7 @@ export default function StorePageClient() {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="wa-nav-btn"
-                style={{
-                  display: "inline-flex",
-                  alignItems: "center",
-                  gap: "7px",
-                  minHeight: "42px",
-                  padding: "0 14px",
-                  borderRadius: "12px",
-                  border: "2px solid #25D366",
-                  color: "#1B6B3A",
-                  background: "#ffffff",
-                  fontWeight: 600,
-                  fontSize: "14px",
-                  textDecoration: "none",
-                  cursor: "pointer",
-                }}
+                title="WhatsApp-এ মেসেজ দিন"
               >
                 <WhatsAppIcon size={18} color="#25D366" />
                 <span className="wa-nav-text">WhatsApp</span>
@@ -140,12 +126,6 @@ export default function StorePageClient() {
               <a
                 href="#order"
                 className="btn nav-order-btn"
-                style={{
-                  minHeight: "42px",
-                  fontSize: "15px",
-                  padding: "0 18px",
-                  boxShadow: "none",
-                }}
               >
                 অর্ডার করুন
               </a>
@@ -154,152 +134,134 @@ export default function StorePageClient() {
         </header>
 
         {/* Hero Section */}
-        <div className="w hero-sec">
-          <div className="g2">
-            <div style={{ display: "flex", flexDirection: "column", gap: "26px", alignItems: "flex-start" }}>
-              <span className="tag">বার বার ল্যান্ডিং পেইজে টাকা নষ্ট হচ্ছে?</span>
-              <h1 className="hh" style={{ fontSize: "56px", lineHeight: 1.18, fontWeight: 700 }}>
-                যে প্রোডাক্টের Ads চালাবেন, <span style={{ color: "rgb(63, 109, 207)" }}>সেটার জন্যই আলাদা সেলস পেজ।</span>
-              </h1>
-              <p style={{ fontSize: "21px", color: "#44506B" }}>
-                প্রতিটি প্রোডাক্ট জন্য নিজস্ব ল্যান্ডিং পেজ: একটাই পেইজ, একটাই অফার, একটাই অর্ডার বাটন। সাথে পূর্ণাঙ্গ অনলাইন শপও।
-              </p>
-              <div style={{ display: "flex", gap: "14px", flexWrap: "wrap", color: "#0f1b3d", position: "relative" }}>
-                <a href="#order" className="btn" style={{ minWidth: "160px" }}>
-                  অর্ডার করুন
-                </a>
-                <button
-                  type="button"
-                  onClick={() => setIsDemoModalOpen(true)}
-                  className="btn2"
-                  style={{ cursor: "pointer" }}
-                >
-                  লাইভ ডেমো দেখুন
-                </button>
+        <section className="hero-sec">
+          <div className="w">
+            <div className="g2">
+              <div className="hero-content">
+                <span className="tag">বার বার ল্যান্ডিং পেইজে টাকা নষ্ট হচ্ছে?</span>
+                <h1 className="hh hero-title">
+                  যে প্রোডাক্টের Ads চালাবেন, <span>সেটার জন্যই আলাদা সেলস পেজ।</span>
+                </h1>
+                <p className="hero-desc">
+                  প্রতিটি প্রোডাক্টের জন্য নিজস্ব ল্যান্ডিং পেজ: একটাই পেইজ, একটাই অফার, একটাই অর্ডার বাটন। সাথে পূর্ণাঙ্গ অনলাইন শপও।
+                </p>
+                <div className="hero-ctas">
+                  <a href="#order" className="btn hero-btn-primary">
+                    অর্ডার করুন
+                  </a>
+                  <button
+                    type="button"
+                    onClick={() => setIsDemoModalOpen(true)}
+                    className="btn2 hero-btn-secondary"
+                  >
+                    লাইভ ডেমো দেখুন
+                  </button>
+                </div>
+                <p className="hero-subtext">
+                  একবারের ফি · মাসিক চার্জ নেই · ০% কমিশন
+                </p>
               </div>
-              <p style={{ fontSize: "16px", color: "#44506B" }}>
-                একবারের ফি · মাসিক চার্জ নেই · ০% কমিশন
-              </p>
-            </div>
-            {/* Live Landing Page Demo Frame */}
-            <div
-              style={{
-                background: "#fff",
-                border: "1px solid #DDE5F5",
-                borderRadius: "24px",
-                overflow: "hidden",
-                boxShadow: "0 24px 56px rgba(63,109,207,.18)",
-                display: "flex",
-                flexDirection: "column",
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "space-between",
-                  padding: "12px 18px",
-                  background: "#EEF2FB",
-                  borderBottom: "1px solid #DDE5F5",
-                  fontSize: "13px",
-                  color: "#44506B",
-                  gap: "8px",
-                }}
-              >
-                <div style={{ display: "flex", alignItems: "center", gap: "8px", minWidth: 0, overflow: "hidden" }}>
-                  <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#FF5F56", display: "inline-block", flexShrink: 0 }}></span>
-                  <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#FFBD2E", display: "inline-block", flexShrink: 0 }}></span>
-                  <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#27C93F", display: "inline-block", flexShrink: 0 }}></span>
-                  <span
+              {/* Live Landing Page Demo Frame */}
+              <div className="hero-demo-card">
+                <div
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    padding: "12px 18px",
+                    background: "#EEF2FB",
+                    borderBottom: "1px solid #DDE5F5",
+                    fontSize: "13px",
+                    color: "#44506B",
+                    gap: "8px",
+                  }}
+                >
+                  <div style={{ display: "flex", alignItems: "center", gap: "8px", minWidth: 0, overflow: "hidden" }}>
+                    <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#FF5F56", display: "inline-block", flexShrink: 0 }}></span>
+                    <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#FFBD2E", display: "inline-block", flexShrink: 0 }}></span>
+                    <span style={{ width: "10px", height: "10px", borderRadius: "50%", background: "#27C93F", display: "inline-block", flexShrink: 0 }}></span>
+                    <span
+                      style={{
+                        marginLeft: "6px",
+                        background: "#fff",
+                        padding: "4px 10px",
+                        borderRadius: "8px",
+                        border: "1px solid #DDE5F5",
+                        fontSize: "12px",
+                        color: "#44506B",
+                        fontFamily: "monospace",
+                        whiteSpace: "nowrap",
+                        overflow: "hidden",
+                        textOverflow: "ellipsis",
+                        maxWidth: "180px",
+                      }}
+                    >
+                      storepage.codebiruni.com/p/demo
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setIsDemoModalOpen(true)}
                     style={{
-                      marginLeft: "6px",
-                      background: "#fff",
-                      padding: "4px 10px",
-                      borderRadius: "8px",
-                      border: "1px solid #DDE5F5",
-                      fontSize: "12px",
-                      color: "#44506B",
-                      fontFamily: "monospace",
+                      fontSize: "13px",
+                      fontWeight: 600,
+                      color: "#3F6DCF",
+                      display: "inline-flex",
+                      alignItems: "center",
+                      gap: "4px",
                       whiteSpace: "nowrap",
-                      overflow: "hidden",
-                      textOverflow: "ellipsis",
-                      maxWidth: "180px",
+                      flexShrink: 0,
+                      background: "none",
+                      border: "none",
+                      cursor: "pointer",
+                      padding: 0,
+                      font: "inherit",
                     }}
                   >
-                    storepage.codebiruni.com/p/demo
-                  </span>
+                    ফুলস্ক্রিন ডেমো ↗
+                  </button>
                 </div>
-                <button
-                  type="button"
-                  onClick={() => setIsDemoModalOpen(true)}
-                  style={{
-                    fontSize: "13px",
-                    fontWeight: 600,
-                    color: "#3F6DCF",
-                    display: "inline-flex",
-                    alignItems: "center",
-                    gap: "4px",
-                    whiteSpace: "nowrap",
-                    flexShrink: 0,
-                    background: "none",
-                    border: "none",
-                    cursor: "pointer",
-                    padding: 0,
-                    font: "inherit",
-                  }}
-                >
-                  ফুলস্ক্রিন ডেমো ↗
-                </button>
-              </div>
-              <div
-                className="hero-frame"
-                style={{
-                  position: "relative",
-                  width: "100%",
-                  height: "540px",
-                  background: "#fff",
-                  overflow: "hidden",
-                }}
-              >
-                <iframe
-                  src="https://storepage.codebiruni.com/step/6ad0a67d26bd6a83391bd604"
-                  title="StorePage Live Landing Page Demo"
-                  style={{
-                    width: "100%",
-                    height: "100%",
-                    border: "none",
-                    display: "block",
-                  }}
-                  loading="lazy"
-                />
+                <div className="hero-frame">
+                  <iframe
+                    src="https://storepage.codebiruni.com/step/6ad0a67d26bd6a83391bd604"
+                    title="StorePage Live Landing Page Demo"
+                    style={{
+                      width: "100%",
+                      height: "100%",
+                      border: "none",
+                      display: "block",
+                    }}
+                    loading="lazy"
+                  />
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* Dark / Pain Points Section */}
         <div className="dark sec">
           <div className="w">
-            <h2 style={{ maxWidth: "760px", marginBottom: "44px" }}>
+            <h2 style={{ maxWidth: "760px", marginBottom: "40px" }}>
               Ad এর ক্লিক আসে একটা প্রোডাক্টের জন্য, কিন্তু কাস্টমার পৌঁছায় পুরো ক্যাটালগে।
             </h2>
             <div className="g3">
-              <div>
-                <h3 style={{ fontSize: "22px", color: "#FFB38A" }}>ভিড়ে হারিয়ে যায়</h3>
-                <p style={{ marginTop: "10px", color: "#C9D5F2", fontSize: "18px" }}>
-                  ১০০ প্রোডাক্টের মাঝে কনফিউজড হয়ে কাস্টমার ফিরে যায়।
+              <div className="pain-point-card">
+                <h3>ভিড়ে হারিয়ে যায়</h3>
+                <p>
+                  ১০০ প্রোডাক্টের মাঝে কনফিউজড হয়ে কাস্টমার অর্ডার না দিয়েই ফিরে যায়।
                 </p>
               </div>
-              <div>
-                <h3 style={{ fontSize: "22px", color: "#FFB38A" }}>বারবার খরচ</h3>
-                <p style={{ marginTop: "10px", color: "#C9D5F2", fontSize: "18px" }}>
-                  প্রতিটি নতুন প্রোডাক্টে আলাদা ল্যান্ডিং পেজ বানাতে সময় ও টাকা লাগে।
+              <div className="pain-point-card">
+                <h3>বারবার খরচ</h3>
+                <p>
+                  প্রতিটি নতুন প্রোডাক্টে আলাদা ল্যান্ডিং পেজ বানাতে সময় ও অনেক টাকা লাগে।
                 </p>
               </div>
-              <div>
-                <h3 style={{ fontSize: "22px", color: "#FFB38A" }}>রিটার্ন ও মাসিক চার্জ</h3>
-                <p style={{ marginTop: "10px", color: "#C9D5F2", fontSize: "18px" }}>
-                  ফেক অর্ডারে কুরিয়ার খরচ নষ্ট, তার ওপর সাবস্ক্রিপশন বা কমিশন।
+              <div className="pain-point-card">
+                <h3>রিটার্ন ও মাসিক চার্জ</h3>
+                <p>
+                  ফেক অর্ডারে কুরিয়ার খরচ নষ্ট, তার ওপর অতিরিক্ত সাবস্ক্রিপশন বা সেলস কমিশন।
                 </p>
               </div>
             </div>
@@ -307,15 +269,16 @@ export default function StorePageClient() {
         </div>
 
         {/* Demo Section */}
-        <div className="w sec" id="demo">
-          <div style={{ textAlign: "center", maxWidth: "760px", margin: "0 auto 52px" }}>
-            <span className="tag">মূল ফিচার</span>
-            <h2 style={{ marginTop: "16px" }}>স্টোরে যোগ করুন একবার। কাস্টমার দেখবে নিজস্ব ল্যান্ডিং পেজ।</h2>
-            <p style={{ marginTop: "14px", fontSize: "20px", color: "#44506B" }}>
-              একই প্রোডাক্ট, দুই রকম অভিজ্ঞতা: স্টোরে ব্রাউজ করা, ল্যান্ডিং পেজে অর্ডার করা।
-            </p>
-          </div>
-          <div className="g5">
+        <div className="sec" id="demo">
+          <div className="w">
+            <div style={{ textAlign: "center", maxWidth: "760px", margin: "0 auto 48px" }}>
+              <span className="tag">মূল ফিচার</span>
+              <h2 style={{ marginTop: "16px" }}>স্টোরে যোগ করুন একবার। কাস্টমার দেখবে নিজস্ব ল্যান্ডিং পেজ।</h2>
+              <p style={{ marginTop: "14px", fontSize: "19px", color: "#44506B" }}>
+                একই প্রোডাক্ট, দুই রকম অভিজ্ঞতা: স্টোরে ব্রাউজ করা, ল্যান্ডিং পেজে অর্ডার করা।
+              </p>
+            </div>
+            <div className="g5">
             {/* 1. Store: Customer Browses */}
             <div className="step-card">
               <div className="step-header">
@@ -511,6 +474,7 @@ export default function StorePageClient() {
             </div>
           </div>
         </div>
+      </div>
 
         {/* Dashboard Features Section */}
         <div style={{ background: "#fff", borderTop: "1px solid #DDE5F5", borderBottom: "1px solid #DDE5F5" }} className="sec">
@@ -853,52 +817,43 @@ export default function StorePageClient() {
           <div className="w" style={{ textAlign: "center" }}>
             <span className="pill">লঞ্চ অফার · প্রথম ৫০ জনের জন্য</span>
             <h2 style={{ marginTop: "20px" }}>৳১৮,০০০ ভ্যালুর বোনাস, সম্পূর্ণ ফ্রি</h2>
-            <div className="g3" style={{ marginTop: "44px", textAlign: "left" }}>
-              <div style={{ border: "1px solid rgba(255,255,255,.18)", borderRadius: "20px", padding: "28px" }}>
+            <div className="g3" style={{ marginTop: "40px", textAlign: "left" }}>
+              <div className="bonus-card">
                 <span className="pill">মূল্য ৳৮,০০০ — ফ্রি</span>
-                <h3 style={{ fontSize: "21px", marginTop: "14px" }}>ইনস্টলযোগ্য মোবাইল অ্যাপ (PWA)</h3>
-                <p style={{ marginTop: "8px", color: "#C9D5F2", fontSize: "17px" }}>
-                  প্লে স্টোর ছাড়াই কাস্টমার অ্যাপের মতো ওয়েবসাইট ইনস্টল করবে।
+                <h3>ইনস্টলযোগ্য মোবাইল অ্যাপ (PWA)</h3>
+                <p>
+                  প্লে স্টোর ছাড়াই কাস্টমার অ্যাপের মতো ওয়েবসাইট ফোনে ইনস্টল করবে।
                 </p>
               </div>
-              <div style={{ border: "1px solid rgba(255,255,255,.18)", borderRadius: "20px", padding: "28px" }}>
+              <div className="bonus-card">
                 <span className="pill">মূল্য ৳৬,০০০ — ফ্রি</span>
-                <h3 style={{ fontSize: "21px", marginTop: "14px" }}>১ বছর টেকনিক্যাল সাপোর্ট</h3>
-                <p style={{ marginTop: "8px", color: "#C9D5F2", fontSize: "17px" }}>
-                  যেকোনো সমস্যায় সরাসরি ডেভেলপার সাপোর্ট ও মেইনটেন্যান্স।
+                <h3>১ বছর টেকনিক্যাল সাপোর্ট</h3>
+                <p>
+                  যেকোনো সমস্যায় সরাসরি ডেভেলপার সাপোর্ট ও দ্রুত মেইনটেন্যান্স।
                 </p>
               </div>
-              <div style={{ border: "1px solid rgba(255,255,255,.18)", borderRadius: "20px", padding: "28px" }}>
+              <div className="bonus-card">
                 <span className="pill">মূল্য ৳৪,০০০ — ফ্রি</span>
-                <h3 style={{ fontSize: "21px", marginTop: "14px" }}>১ বছরের ডোমেইন ও হোস্টিং</h3>
-                <p style={{ marginTop: "8px", color: "#C9D5F2", fontSize: "17px" }}>
-                  সার্ভার কনফিগারেশন ও এসএসএল সিকিউরিটিসহ সম্পূর্ণ সেটআপ।
+                <h3>১ বছরের ডোমেইন ও হোস্টিং</h3>
+                <p>
+                  হাই-স্পিড সার্ভার কনফিগারেশন ও এসএসএল সিকিউরিটিসহ সম্পূর্ণ সেটআপ।
                 </p>
               </div>
             </div>
-            <div
-              style={{
-                margin: "48px auto 0",
-                maxWidth: "520px",
-                background: "#fff",
-                color: "#0F1B3D",
-                borderRadius: "24px",
-                padding: "36px",
-              }}
-            >
-              <s style={{ color: "#6B7690", fontSize: "22px" }}>৳২৫,০০০</s>
-              <div style={{ fontSize: "64px", fontWeight: 700, color: "#3F6DCF", lineHeight: 1.1 }}>৳১৫,০০০</div>
-              <p style={{ fontWeight: 600, marginBottom: "20px" }}>একবারের পেমেন্ট</p>
-              <div style={{ display: "grid", gap: "12px", textAlign: "left", marginBottom: "26px" }}>
+            <div className="pricing-card">
+              <s>৳২৫,০০০</s>
+              <div className="pricing-amount">৳১৫,০০০</div>
+              <p className="pricing-frequency">একবারের পেমেন্ট</p>
+              <div className="pricing-features">
                 <div className="ck">মাসিক সাবস্ক্রিপশন নেই</div>
                 <div className="ck">বিক্রিতে ০% কমিশন</div>
                 <div className="ck">ইনস্ট্যান্ট টেলিগ্রাম অর্ডার নোটিফিকেশন</div>
                 <div className="ck">২৪-৪৮ ঘণ্টায় ওয়েবসাইট লাইভ</div>
               </div>
-              <a href="#order" className="btn" style={{ width: "100%", color: "#ffffff" }}>
+              <a href="#order" className="btn pricing-btn">
                 এখনই আপনার স্লট নিন
               </a>
-              <p style={{ marginTop: "14px", fontSize: "15px", color: "#44506B" }}>
+              <p className="pricing-subtext">
                 অগ্রিম পেমেন্ট ছাড়াই আলোচনা করুন
               </p>
             </div>
@@ -906,29 +861,31 @@ export default function StorePageClient() {
         </div>
 
         {/* FAQ Section */}
-        <div className="w sec" style={{ maxWidth: "860px", paddingBottom: "72px" }}>
-          <h2 style={{ textAlign: "center", marginBottom: "36px" }}>সচরাচর জিজ্ঞাসিত প্রশ্ন</h2>
-          <div style={{ display: "grid", gap: "12px" }}>
-            <details>
-              <summary>নিজে প্রোডাক্ট, ক্যাটাগরি ও দাম পরিবর্তন করতে পারব?</summary>
-              <p style={{ marginTop: "10px", color: "#44506B" }}>হ্যাঁ। ড্যাশবোর্ড থেকে সবকিছু নিজেই ম্যানেজ করতে পারবেন।</p>
-            </details>
-            <details>
-              <summary>নতুন অর্ডার আসলে আমি সাথে সাথে নোটিফিকেশন পাব?</summary>
-              <p style={{ marginTop: "10px", color: "#44506B" }}>হ্যাঁ! কাস্টমার অর্ডার প্লেস করা মাত্রই ১ সেকেন্ডে অ্যাডমিন ও ম্যানেজমেন্টের টেলিগ্রাম গ্রুপে সম্পূর্ণ কাস্টমার ডিটেইলস সহ অ্যালার্ট চলে যাবে।</p>
-            </details>
-            <details>
-              <summary>পাঠাও ও স্টেডফাস্ট কুরিয়ার কীভাবে যুক্ত হয়?</summary>
-              <p style={{ marginTop: "10px", color: "#44506B" }}>সেটআপের সময় আমরাই আপনার কুরিয়ার অ্যাকাউন্ট যুক্ত করে দিই।</p>
-            </details>
-            <details>
-              <summary>১৫,০০০ টাকার পর কোনো হিডেন খরচ আছে কি?</summary>
-              <p style={{ marginTop: "10px", color: "#44506B" }}>না। এটি একবারের ফি, মাসিক চার্জ নেই।</p>
-            </details>
-            <details>
-              <summary>ওয়েবসাইট ডেলিভারিতে কতদিন লাগবে?</summary>
-              <p style={{ marginTop: "10px", color: "#44506B" }}>সর্বোচ্চ ২৪-৪৮ ঘণ্টার মধ্যে ওয়েবসাইট লাইভ।</p>
-            </details>
+        <div className="sec" style={{ background: "#F4F7FD" }}>
+          <div className="w" style={{ maxWidth: "860px" }}>
+            <h2 style={{ textAlign: "center", marginBottom: "36px" }}>সচরাচর জিজ্ঞাসিত প্রশ্ন</h2>
+            <div className="faq-list">
+              <details>
+                <summary>নিজে প্রোডাক্ট, ক্যাটাগরি ও দাম পরিবর্তন করতে পারব?</summary>
+                <p>হ্যাঁ। ড্যাশবোর্ড থেকে সবকিছু নিজেই সহজে পরিবর্তন ও ম্যানেজ করতে পারবেন।</p>
+              </details>
+              <details>
+                <summary>নতুন অর্ডার আসলে আমি সাথে সাথে নোটিফিকেশন পাব?</summary>
+                <p>হ্যাঁ! কাস্টমার অর্ডার প্লেস করা মাত্রই ১ সেকেন্ডে অ্যাডমিন ও ম্যানেজমেন্টের টেলিগ্রাম গ্রুপে সম্পূর্ণ কাস্টমার ডিটেইলস সহ অ্যালার্ট চলে যাবে।</p>
+              </details>
+              <details>
+                <summary>পাঠাও ও স্টেডফাস্ট কুরিয়ার কীভাবে যুক্ত হয়?</summary>
+                <p>সেটআপের সময় আমরাই আপনার কুরিয়ার অ্যাকাউন্ট যুক্ত করে দিই, যাতে এক ক্লিকেই বুকিং করা যায়।</p>
+              </details>
+              <details>
+                <summary>১৫,০০০ টাকার পর কোনো হিডেন খরচ আছে কি?</summary>
+                <p>না। এটি একবারের সেটআপ ফি, কোনো মাসিক চার্জ বা পার-অর্ডার কমিশন নেই।</p>
+              </details>
+              <details>
+                <summary>ওয়েবসাইট ডেলিভারিতে কতদিন লাগবে?</summary>
+                <p>সব তথ্য পাওয়ার পর সর্বোচ্চ ২৪-৪৮ ঘণ্টার মধ্যে ওয়েবসাইট সম্পূর্ণ রেডি ও লাইভ।</p>
+              </details>
+            </div>
           </div>
         </div>
 
@@ -936,9 +893,9 @@ export default function StorePageClient() {
         <div style={{ background: "#3F6DCF", color: "#fff" }} className="sec" id="order">
           <div className="w">
             <div className="g2">
-              <div style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
+              <div className="order-cta-content">
                 <h2>আপনার পরের অ্যাডের আগেই StorePage সেট করে নিন</h2>
-                <p style={{ fontSize: "20px" }}>
+                <p>
                   ফর্ম পূরণ করুন। আমরা সর্বোচ্চ ২ ঘণ্টার মধ্যে কল করে ডেমো দেখাব এবং সেটআপ বুঝিয়ে দেব।
                 </p>
                 <a
@@ -1049,18 +1006,11 @@ export default function StorePageClient() {
         </div>
 
         {/* Footer */}
-        <div
-          className="w"
-          style={{
-            paddingTop: "28px",
-            paddingBottom: "28px",
-            textAlign: "center",
-            color: "#44506B",
-            fontSize: "15px",
-          }}
-        >
-          © 2026 Code Biruni. All rights reserved
-        </div>
+        <footer className="sp-footer">
+          <div className="w">
+            © 2026 Code Biruni. All rights reserved
+          </div>
+        </footer>
 
         {/* Demo Credentials Modal */}
         {isDemoModalOpen && (
