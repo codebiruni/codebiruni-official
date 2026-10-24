@@ -410,6 +410,7 @@ export default function StorePageLeadsManager() {
           brand: "",
           note: "",
           status: "new",
+          projectType: "StorePage (Growth ৳14,999)",
         });
         fetchLeads();
       } else {
