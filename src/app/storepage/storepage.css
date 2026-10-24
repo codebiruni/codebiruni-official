@@ -1,4 +1,5 @@
-/* Font is provided by next/font via --font-hind (no render-blocking @import) */
+/* Fonts: Noto Sans Bengali & Anek Bangla (clean, standard Bengali numerals) */
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;500;600;700;800&family=Anek+Bangla:wght@400;500;600;700&display=swap");
 
 @media (prefers-reduced-motion: no-preference) {
   html:has(.sp) {
@@ -7,7 +8,7 @@
 }
 
 .sp {
-  font-family: var(--font-hind), "Noto Sans Bengali", "Nirmala UI", system-ui, -apple-system,
+  font-family: var(--font-noto-bengali), "Noto Sans Bengali", "Anek Bangla", "Kalpurush", "SolaimanLipi", "Nirmala UI", system-ui, -apple-system,
     "Segoe UI", Roboto, sans-serif;
   color: #0f1b3d;
   background: #f4f7fd;
@@ -933,100 +934,393 @@
   margin-top: 20px;
 }
 
+.sp .offer-subtitle {
+  max-width: 720px;
+  margin: 12px auto 0;
+  font-size: clamp(15px, 1.8vw, 17px);
+  color: #c9d5f2;
+  line-height: 1.5;
+}
+
 .sp .bonus-grid {
-  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 36px;
   text-align: left;
 }
 
 .sp .bonus-card {
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 20px;
-  padding: 28px;
+  padding: 24px 20px;
   background: rgba(255, 255, 255, 0.04);
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
+  transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+
+.sp .bonus-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(63, 109, 207, 0.6);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .sp .bonus-card h3 {
-  font-size: 21px;
+  font-size: 18px;
   color: #fff;
+  line-height: 1.35;
 }
 
 .sp .bonus-card p {
   color: #c9d5f2;
-  font-size: 17px;
+  font-size: 14px;
   line-height: 1.5;
 }
 
+/* ---------- 3 Pricing Models & Offer ---------- */
+.sp .pricing-main-wrap {
+  margin-top: 64px;
+  padding-top: 48px;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.sp .pricing-header {
+  text-align: center;
+  max-width: 680px;
+  margin: 0 auto;
+}
+
+.sp .pricing-headline {
+  margin-top: 14px;
+  font-size: clamp(28px, 4vw, 42px);
+  color: #ffffff;
+  line-height: 1.25;
+}
+
+.sp .pricing-subheadline {
+  margin-top: 10px;
+  font-size: clamp(16px, 1.8vw, 18px);
+  color: #c9d5f2;
+  line-height: 1.5;
+}
+
+/* Mobile Quick Selector Tabs (Hidden on desktop) */
+.sp .pricing-mobile-tabs {
+  display: none;
+}
+
+/* Slider Track: Desktop 3-column Grid */
+.sp .pricing-slider {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+  align-items: stretch;
+  margin-top: 48px;
+}
+
+/* Pricing Card (Desktop) */
 .sp .pricing-card {
-  margin: 48px auto 0;
-  max-width: 520px;
-  width: 100%;
-  background: #fff;
+  background: #ffffff;
   color: #0f1b3d;
   border-radius: 24px;
-  padding: 38px 32px;
-  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.28);
-  text-align: center;
+  padding: 36px 26px;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.22);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 
-.sp .pricing-card s {
-  color: #6b7690;
-  font-size: 22px;
+.sp .pricing-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.32);
 }
 
-.sp .pricing-amount {
-  font-size: clamp(48px, 8vw, 64px);
+.sp .pricing-card.featured {
+  border: 2px solid #3f6dcf;
+  box-shadow: 0 24px 64px rgba(63, 109, 207, 0.35);
+  background: #ffffff;
+}
+
+@media (min-width: 901px) {
+  .sp .pricing-card.featured {
+    transform: scale(1.03);
+    z-index: 2;
+  }
+  .sp .pricing-card.featured:hover {
+    transform: scale(1.03) translateY(-4px);
+    box-shadow: 0 30px 70px rgba(63, 109, 207, 0.45);
+  }
+}
+
+.sp .pricing-ribbon {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #3f6dcf 0%, #204db3 100%);
+  color: #ffffff;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 5px 16px;
+  border-radius: 999px;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
+  box-shadow: 0 6px 18px rgba(63, 109, 207, 0.45);
+  z-index: 3;
+}
+
+.sp .plan-header {
+  margin-bottom: 16px;
+}
+
+.sp .plan-badge {
+  display: inline-block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #3f6dcf;
+  background: #eef3ff;
+  padding: 4px 12px;
+  border-radius: 999px;
+  margin-bottom: 10px;
+}
+
+.sp .plan-name {
+  font-size: 24px;
+  font-weight: 700;
+  color: #0f1b3d;
+  margin: 0 0 6px;
+}
+
+.sp .plan-desc {
+  font-size: 14px;
+  color: #5a6782;
+  line-height: 1.45;
+  min-height: 42px;
+  margin: 0;
+}
+
+.sp .plan-price-wrap {
+  margin: 16px 0 20px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #eef2f9;
+}
+
+.sp .plan-price-wrap s {
+  color: #8391af;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.sp .plan-price {
+  font-size: 42px;
   font-weight: 700;
   color: #3f6dcf;
   line-height: 1.1;
   margin: 4px 0;
 }
 
-.sp .pricing-frequency {
+.sp .plan-period {
+  font-size: 13px;
   font-weight: 600;
-  margin: 0 0 20px;
-  color: #44506b;
+  color: #52607d;
+  margin: 0;
 }
 
 .sp .pricing-features {
   display: grid;
-  gap: 12px;
+  gap: 11px;
   text-align: left;
   margin-bottom: 26px;
+  flex-grow: 1;
 }
 
 .sp .ck {
   display: flex;
-  gap: 12px;
+  gap: 10px;
   align-items: flex-start;
-  font-size: 18px;
+  font-size: 15px;
+  color: #243048;
+  line-height: 1.42;
+}
+
+.sp .ck-highlight {
+  font-weight: 600;
+  color: #0c1a3b;
+}
+
+.sp .ck-no {
+  color: #9aa5be;
+  text-decoration: line-through;
+  opacity: 0.7;
 }
 
 .sp .ck::before {
   content: "✓";
   flex: none;
-  width: 24px;
-  height: 24px;
+  width: 20px;
+  height: 20px;
   border-radius: 50%;
   background: #3f6dcf;
   color: #fff;
-  font-size: 13px;
+  font-size: 11px;
+  font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 3px;
+  margin-top: 2px;
+}
+
+.sp .ck-highlight::before {
+  background: #2563eb;
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.18);
+}
+
+.sp .ck-no::before {
+  content: "✕";
+  background: #e2e8f0;
+  color: #94a3b8;
+  font-size: 10px;
+}
+
+.sp .plan-action {
+  margin-top: auto;
 }
 
 .sp .pricing-btn {
   width: 100%;
+  padding: 13px 18px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  border: none;
+  text-decoration: none;
+}
+
+.sp .pricing-btn.featured {
+  background: #3f6dcf;
+  color: #ffffff;
+  box-shadow: 0 6px 20px rgba(63, 109, 207, 0.35);
+}
+
+.sp .pricing-btn.featured:hover {
+  background: #2a58bd;
+  box-shadow: 0 8px 24px rgba(63, 109, 207, 0.45);
+}
+
+.sp .pricing-btn.secondary {
+  background: #f0f4fd;
+  color: #274ea8;
+  border: 1px solid #d0deff;
+}
+
+.sp .pricing-btn.secondary:hover {
+  background: #3f6dcf;
+  color: #ffffff;
+  border-color: #3f6dcf;
 }
 
 .sp .pricing-subtext {
-  margin-top: 14px;
+  margin-top: 10px;
+  font-size: 13px;
+  color: #6d7b97;
+  text-align: center;
+}
+
+/* Slider Controls & Swipe Hint (Hidden on desktop) */
+.sp .slider-controls {
+  display: none;
+}
+
+.sp .mobile-swipe-hint {
+  display: none;
+}
+
+/* Order Form Plan Selector */
+.sp .order-plan-selector {
+  margin-bottom: 6px;
+  padding: 14px;
+  background: #f5f8fd;
+  border: 1px solid #d8e2f3;
+  border-radius: 14px;
+}
+
+.sp .order-plan-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  color: #2d3a54;
+  margin-bottom: 8px;
+}
+
+.sp .order-plan-pills {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.sp .order-plan-pill {
+  padding: 9px 6px;
+  border-radius: 10px;
+  border: 1.5px solid #c9d6ef;
+  background: #ffffff;
+  color: #2b3954;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.sp .order-plan-pill:hover {
+  border-color: #3f6dcf;
+}
+
+.sp .order-plan-pill.active {
+  background: #3f6dcf;
+  border-color: #3f6dcf;
+  color: #ffffff;
+  box-shadow: 0 4px 14px rgba(63, 109, 207, 0.28);
+}
+
+.sp .order-plan-pill .opp-name {
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.sp .order-plan-pill .opp-price {
   font-size: 15px;
-  color: #5a6782;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.sp .order-plan-pill .opp-badge {
+  font-size: 9px;
+  padding: 1px 5px;
+  border-radius: 99px;
+  background: #ef4444;
+  color: #fff;
+  position: absolute;
+  top: -7px;
+  right: -3px;
+  font-weight: 700;
+  line-height: 1.3;
 }
 
 /* ---------- FAQ ---------- */
@@ -1439,6 +1733,198 @@
   .sp .hero-sec {
     padding: 40px 0 64px;
   }
+
+  .sp .bonus-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 28px;
+  }
+
+  /* 3 Pricing Models: Sleek Modern Slider on mobile & tablet */
+  .sp .pricing-main-wrap {
+    margin-top: 48px;
+    padding-top: 36px;
+  }
+
+  .sp .pricing-mobile-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    margin: 24px auto 12px;
+    padding: 5px;
+    background: rgba(255, 255, 255, 0.07);
+    border: 1px solid rgba(255, 255, 255, 0.14);
+    border-radius: 999px;
+    max-width: 390px;
+    width: 100%;
+  }
+
+  .sp .pricing-tab-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 8px 8px;
+    border-radius: 999px;
+    border: none;
+    background: transparent;
+    color: #c5d2ec;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: inherit;
+    font-size: 13px;
+    line-height: 1.2;
+  }
+
+  .sp .pricing-tab-btn.active {
+    background: #3f6dcf;
+    color: #ffffff;
+    font-weight: 700;
+    box-shadow: 0 4px 14px rgba(63, 109, 207, 0.4);
+  }
+
+  .sp .tab-pill-price {
+    font-weight: 700;
+    font-size: 14px;
+  }
+
+  .sp .tab-pill-name {
+    font-size: 11px;
+    opacity: 0.85;
+  }
+
+  .sp .tab-pill-star {
+    font-size: 10px;
+    margin-left: 2px;
+  }
+
+  /* Slider Track */
+  .sp .pricing-slider {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    gap: 16px;
+    padding: 24px 20px 20px;
+    margin: 0 -24px;
+    scrollbar-width: none;
+    overscroll-behavior-x: contain;
+  }
+
+  .sp .pricing-slider::-webkit-scrollbar {
+    display: none;
+  }
+
+  .sp .pricing-card {
+    flex: 0 0 85%;
+    max-width: 350px;
+    scroll-snap-align: center;
+    margin: 0;
+    padding: 30px 22px;
+    border-radius: 22px;
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+  }
+
+  .sp .pricing-card.featured {
+    transform: none;
+    border-color: #3f6dcf;
+  }
+
+  .sp .pricing-card.featured:hover {
+    transform: none;
+  }
+
+  .sp .pricing-ribbon {
+    top: -13px;
+    font-size: 12px;
+    padding: 4px 14px;
+  }
+
+  .sp .plan-name {
+    font-size: 21px;
+  }
+
+  .sp .plan-desc {
+    min-height: auto;
+    font-size: 13px;
+  }
+
+  .sp .plan-price {
+    font-size: 38px;
+  }
+
+  .sp .ck {
+    font-size: 14px;
+    gap: 8px;
+  }
+
+  /* Slider Controls: Dots + Arrows */
+  .sp .slider-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin-top: 14px;
+  }
+
+  .sp .slider-dots {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .sp .slider-dot {
+    width: 9px;
+    height: 9px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.25);
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .sp .slider-dot.active {
+    width: 26px;
+    background: #3f6dcf;
+    box-shadow: 0 0 12px rgba(63, 109, 207, 0.7);
+  }
+
+  .sp .slider-nav-btn {
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .sp .slider-nav-btn:disabled {
+    opacity: 0.25;
+    cursor: not-allowed;
+  }
+
+  .sp .slider-nav-btn:not(:disabled):active {
+    background: rgba(255, 255, 255, 0.22);
+  }
+
+  .sp .mobile-swipe-hint {
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    color: #9cb1da;
+    margin-top: 10px;
+    letter-spacing: 0.2px;
+  }
 }
 
 /* ===================== MOBILE (<= 640px) ===================== */
@@ -1625,6 +2111,12 @@
     font-size: 14px;
   }
 
+  .sp .bonus-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    margin-top: 24px;
+  }
+
   .sp .bonus-card {
     padding: 22px 18px;
     border-radius: 16px;
@@ -1639,18 +2131,45 @@
     font-size: 15px;
   }
 
+  .sp .pricing-slider {
+    padding: 20px 16px 16px;
+    margin: 0 -20px;
+    gap: 14px;
+  }
+
   .sp .pricing-card {
-    margin-top: 32px;
-    padding: 28px 20px;
+    flex: 0 0 88%;
+    max-width: 320px;
+    padding: 26px 18px;
     border-radius: 20px;
   }
 
   .sp .pricing-card s {
-    font-size: 19px;
+    font-size: 16px;
+  }
+
+  .sp .plan-price {
+    font-size: 34px;
   }
 
   .sp .ck {
-    font-size: 16px;
+    font-size: 13.5px;
+  }
+
+  .sp .order-plan-pills {
+    gap: 6px;
+  }
+
+  .sp .order-plan-pill {
+    padding: 8px 4px;
+  }
+
+  .sp .order-plan-pill .opp-name {
+    font-size: 11px;
+  }
+
+  .sp .order-plan-pill .opp-price {
+    font-size: 13.5px;
   }
 
   .sp details {

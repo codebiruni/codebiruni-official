@@ -144,12 +144,91 @@ export const STAGE_CONFIG: Record<
   },
 };
 
+export function getPlanBadge(projectType?: string) {
+  if (!projectType) {
+    return {
+      name: "StorePage",
+      price: "",
+      badgeClass:
+        "bg-slate-100 text-slate-700 border-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700",
+      dotClass: "bg-slate-500",
+    };
+  }
+
+  const lower = projectType.toLowerCase();
+
+  if (lower.includes("pro")) {
+    const price = projectType.match(/৳[\d,০-৯]+/)?.[0] || "৳১৭,৯৯৯";
+    return {
+      name: "Pro",
+      price,
+      badgeClass:
+        "bg-purple-50 text-purple-700 border-purple-200 dark:bg-purple-950/50 dark:text-purple-300 dark:border-purple-800",
+      dotClass: "bg-purple-500",
+    };
+  }
+
+  if (lower.includes("growth")) {
+    const price = projectType.match(/৳[\d,০-৯]+/)?.[0] || "৳১৪,৯৯৯";
+    return {
+      name: "Growth",
+      price,
+      badgeClass:
+        "bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950/50 dark:text-blue-300 dark:border-blue-800",
+      dotClass: "bg-blue-500",
+    };
+  }
+
+  if (lower.includes("starter")) {
+    const price = projectType.match(/৳[\d,০-৯]+/)?.[0] || "৳৯,৯৯৯";
+    return {
+      name: "Starter",
+      price,
+      badgeClass:
+        "bg-emerald-50 text-emerald-700 border-emerald-200 dark:bg-emerald-950/50 dark:text-emerald-300 dark:border-emerald-800",
+      dotClass: "bg-emerald-500",
+    };
+  }
+
+  // Older leads e.g. "StorePage (E-Commerce ৳15,000)"
+  if (lower.includes("15,000") || lower.includes("14,999")) {
+    return {
+      name: "Growth",
+      price: "৳১৪,৯৯৯",
+      badgeClass:
+        "bg-blue-50 text-blue-700 border-blue-200 dark:bg-blue-950/50 dark:text-blue-300 dark:border-blue-800",
+      dotClass: "bg-blue-500",
+    };
+  }
+
+  const cleanName = projectType
+    .replace(/^StorePage\s*/i, "")
+    .replace(/[()]/g, "")
+    .trim();
+
+  return {
+    name: cleanName || "StorePage",
+    price: "",
+    badgeClass:
+      "bg-slate-100 text-slate-700 border-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:border-slate-700",
+    dotClass: "bg-slate-500",
+  };
+}
+
+export const STOREPAGE_PLAN_OPTIONS = [
+  { value: "all", label: "All Plans" },
+  { value: "starter", label: "Starter (৳৯,৯৯৯)" },
+  { value: "growth", label: "Growth (৳১৪,৯৯৯)" },
+  { value: "pro", label: "Pro (৳১৭,৯৯৯)" },
+];
+
 export default function StorePageLeadsManager() {
   const [leads, setLeads] = useState<StorePageLead[]>([]);
   const [loading, setLoading] = useState(true);
   const [refreshing, setRefreshing] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [activeStageTab, setActiveStageTab] = useState<string>("all");
+  const [planFilter, setPlanFilter] = useState<string>("all");
   const [sortBy, setSortBy] = useState<"newest" | "oldest">("newest");
   const [copiedId, setCopiedId] = useState<string | null>(null);
 
@@ -166,6 +245,7 @@ export default function StorePageLeadsManager() {
     brand: "",
     note: "",
     status: "new" as LeadStage,
+    projectType: "StorePage (Growth ৳14,999)",
   });
 
   const [addForm, setAddForm] = useState({
@@ -174,6 +254,7 @@ export default function StorePageLeadsManager() {
     brand: "",
     note: "",
     status: "new" as LeadStage,
+    projectType: "StorePage (Growth ৳14,999)",
   });
 
   // Fetch leads from backend
@@ -251,7 +332,7 @@ export default function StorePageLeadsManager() {
         : "";
 
     const message = encodeURIComponent(
-      `আসসালামু আলাইকুম ${lead.name},\nCode Biruni থেকে যোগাযোগ করছি। আপনি আমাদের StorePage (৳১৫,০০০ E-Commerce) অফারে আগ্রহ প্রকাশ করেছিলেন${brandInfo}। আপনার সাথে এই বিষয়ে বিস্তারিত আলোচনা করতে পারি কি?`
+      `আসসালামু আলাইকুম ${lead.name},\nCode Biruni থেকে যোগাযোগ করছি। আপনি আমাদের ${lead.projectType || "StorePage"} অফারে আগ্রহ প্রকাশ করেছিলেন${brandInfo}। আপনার সাথে এই বিষয়ে বিস্তারিত আলোচনা করতে পারি কি?`
     );
 
     window.open(`https://wa.me/${cleanNumber}?text=${message}`, "_blank");
@@ -266,6 +347,7 @@ export default function StorePageLeadsManager() {
       brand: lead.address && lead.address !== "Online Store Client" ? lead.address : "",
       note: lead.note || "",
       status: (lead.status as LeadStage) || "new",
+      projectType: lead.projectType || "StorePage (Growth ৳14,999)",
     });
     setIsEditOpen(true);
   };
@@ -283,6 +365,7 @@ export default function StorePageLeadsManager() {
           address: editForm.brand || "Online Store Client",
           note: editForm.note,
           status: editForm.status,
+          projectType: editForm.projectType,
         },
       });
 
@@ -310,7 +393,7 @@ export default function StorePageLeadsManager() {
       const response = await axios.post("/api/v2/order", {
         name: addForm.name,
         number: addForm.number,
-        projectType: "StorePage (E-Commerce ৳15,000)",
+        projectType: addForm.projectType || "StorePage (Growth ৳14,999)",
         address: addForm.brand || "Online Store Client",
         status: addForm.status,
         note: addForm.note
@@ -443,6 +526,20 @@ export default function StorePageLeadsManager() {
           if (leadStage !== activeStageTab) return false;
         }
 
+        // Plan filter
+        if (planFilter !== "all") {
+          const pt = (lead.projectType || "").toLowerCase();
+          if (planFilter === "starter" && !pt.includes("starter")) return false;
+          if (
+            planFilter === "growth" &&
+            !pt.includes("growth") &&
+            !pt.includes("15,000") &&
+            !pt.includes("14,999")
+          )
+            return false;
+          if (planFilter === "pro" && !pt.includes("pro")) return false;
+        }
+
         // Search filter
         if (!searchQuery.trim()) return true;
         const q = searchQuery.toLowerCase().trim();
@@ -450,6 +547,7 @@ export default function StorePageLeadsManager() {
           lead.name?.toLowerCase().includes(q) ||
           lead.number?.toLowerCase().includes(q) ||
           lead.address?.toLowerCase().includes(q) ||
+          lead.projectType?.toLowerCase().includes(q) ||
           lead.note?.toLowerCase().includes(q)
         );
       })
@@ -458,7 +556,7 @@ export default function StorePageLeadsManager() {
         const timeB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
         return sortBy === "newest" ? timeB - timeA : timeA - timeB;
       });
-  }, [leads, activeStageTab, searchQuery, sortBy]);
+  }, [leads, activeStageTab, planFilter, searchQuery, sortBy]);
 
   return (
     <div className="p-4 sm:p-6 lg:p-8 max-w-7xl mx-auto space-y-6">
@@ -478,7 +576,7 @@ export default function StorePageLeadsManager() {
                   variant="outline"
                   className="bg-emerald-50 text-emerald-700 border-emerald-300 dark:bg-emerald-950/50 dark:text-emerald-400 text-xs font-semibold"
                 >
-                  ৳১৫,০০০ E-Commerce
+                  StorePage Packages
                 </Badge>
               </div>
             </div>
@@ -695,7 +793,25 @@ export default function StorePageLeadsManager() {
             )}
           </div>
 
-          <div className="flex items-center gap-2 justify-between sm:justify-end">
+          <div className="flex flex-wrap items-center gap-2 justify-between sm:justify-end">
+            {/* Plan Filter */}
+            <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
+              <Layers className="h-3.5 w-3.5" />
+              <span className="hidden sm:inline">Plan:</span>
+              <Select value={planFilter} onValueChange={setPlanFilter}>
+                <SelectTrigger className="h-9 text-xs w-[130px] bg-background">
+                  <SelectValue />
+                </SelectTrigger>
+                <SelectContent>
+                  {STOREPAGE_PLAN_OPTIONS.map((opt) => (
+                    <SelectItem key={opt.value} value={opt.value} className="text-xs">
+                      {opt.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+            </div>
+
             <div className="flex items-center gap-1.5 text-xs text-muted-foreground">
               <ArrowUpDown className="h-3.5 w-3.5" />
               <span className="hidden sm:inline">Sort:</span>
@@ -703,7 +819,7 @@ export default function StorePageLeadsManager() {
                 value={sortBy}
                 onValueChange={(val) => setSortBy(val as "newest" | "oldest")}
               >
-                <SelectTrigger className="h-9 text-xs w-[130px] bg-background">
+                <SelectTrigger className="h-9 text-xs w-[125px] bg-background">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -747,7 +863,7 @@ export default function StorePageLeadsManager() {
                   ? `No inquiries currently marked as "${STAGE_CONFIG[activeStageTab as LeadStage]?.label}".`
                   : "Leads submitted from the /storepage customer form will appear here automatically."}
               </p>
-              {(searchQuery || activeStageTab !== "all") && (
+              {(searchQuery || activeStageTab !== "all" || planFilter !== "all") && (
                 <Button
                   variant="outline"
                   size="sm"
@@ -755,6 +871,7 @@ export default function StorePageLeadsManager() {
                   onClick={() => {
                     setSearchQuery("");
                     setActiveStageTab("all");
+                    setPlanFilter("all");
                   }}
                 >
                   Reset All Filters
@@ -766,13 +883,14 @@ export default function StorePageLeadsManager() {
               <Table>
                 <TableHeader className="bg-muted/40">
                   <TableRow className="hover:bg-muted/40 border-b border-border/70 text-xs">
-                    <TableHead className="w-[200px] py-3.5 pl-4 sm:pl-6">Customer</TableHead>
-                    <TableHead className="w-[190px] py-3.5">Phone / Contact</TableHead>
-                    <TableHead className="w-[170px] py-3.5">Brand / Shop</TableHead>
-                    <TableHead className="w-[180px] py-3.5">Pipeline Stage</TableHead>
-                    <TableHead className="w-[150px] py-3.5">Date</TableHead>
+                    <TableHead className="w-[190px] py-3.5 pl-4 sm:pl-6">Customer</TableHead>
+                    <TableHead className="w-[180px] py-3.5">Phone / Contact</TableHead>
+                    <TableHead className="w-[160px] py-3.5">Brand / Shop</TableHead>
+                    <TableHead className="w-[145px] py-3.5">Plan</TableHead>
+                    <TableHead className="w-[170px] py-3.5">Pipeline Stage</TableHead>
+                    <TableHead className="w-[140px] py-3.5">Date</TableHead>
                     <TableHead className="py-3.5">Notes</TableHead>
-                    <TableHead className="w-[120px] py-3.5 pr-4 sm:pr-6 text-right">
+                    <TableHead className="w-[110px] py-3.5 pr-4 sm:pr-6 text-right">
                       Actions
                     </TableHead>
                   </TableRow>
@@ -865,6 +983,29 @@ export default function StorePageLeadsManager() {
                                 : "—"}
                             </span>
                           </div>
+                        </TableCell>
+
+                        {/* Plan Column */}
+                        <TableCell className="py-3.5">
+                          {(() => {
+                            const planInfo = getPlanBadge(lead.projectType);
+                            return (
+                              <div className="flex flex-col gap-0.5">
+                                <Badge
+                                  variant="outline"
+                                  className={`h-6 px-2 text-xs font-semibold border inline-flex items-center gap-1.5 w-fit ${planInfo.badgeClass}`}
+                                >
+                                  <span className={`h-1.5 w-1.5 rounded-full ${planInfo.dotClass}`} />
+                                  <span>{planInfo.name}</span>
+                                </Badge>
+                                {planInfo.price && (
+                                  <span className="text-[11px] font-mono font-medium text-muted-foreground pl-0.5">
+                                    {planInfo.price}
+                                  </span>
+                                )}
+                              </div>
+                            );
+                          })()}
                         </TableCell>
 
                         {/* Interactive Pipeline Stage Selector Column */}
@@ -1100,7 +1241,7 @@ export default function StorePageLeadsManager() {
           <DialogHeader>
             <DialogTitle>Add Manual StorePage Lead</DialogTitle>
             <DialogDescription>
-              Record an incoming offline inquiry or direct message for the StorePage ৳15,000 package.
+              Record an incoming offline inquiry or direct message for the StorePage packages (৳9,999 - ৳17,999).
             </DialogDescription>
           </DialogHeader>
 
